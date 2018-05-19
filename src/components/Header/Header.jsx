@@ -41,12 +41,12 @@ function Header({ ...props }) {
            <img src={logo} />
           </Button>
           <AccountData accountIndex="0" units="ether" precision="3" />
+        </div>
+        <Hidden smDown implementation="css" className={classes.headerRight}>
           <div className={classes.accountInfo}>
             <ContractData contract="REZToken" method="balanceOf" methodArgs={[props.accounts[0]]} />
             <span className={classes.rezTokenLabel}>REZ</span>
           </div>
-        </div>
-        <Hidden smDown implementation="css">
           <HeaderLinks />
         </Hidden>
         <Hidden mdUp>

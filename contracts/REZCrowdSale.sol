@@ -1,7 +1,8 @@
+/*
 pragma solidity ^0.4.23;
 
-import "zeppelin-solidity/contracts/crowdsale/CappedCrowdsale.sol";
-import "zeppelin-solidity/contracts/crowdsale/FinalizableCrowdsale.sol";
+import "openzeppelin-solidity/contracts/crowdsale/CappedCrowdsale.sol";
+import "openzeppelin-solidity/contracts/crowdsale/FinalizableCrowdsale.sol";
 import "./REZToken.sol";
 
 contract REZCrowdsale is CappedCrowdsale, FinalizableCrowdsale {
@@ -49,3 +50,4 @@ contract REZCrowdsale is CappedCrowdsale, FinalizableCrowdsale {
     super.finalization();
   }
 }
+*/

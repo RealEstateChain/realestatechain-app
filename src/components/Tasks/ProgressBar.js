@@ -35,22 +35,26 @@ class ProgressBar extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, progress } = this.props;
 
     return (
+      <div>
       <MobileStepper
         variant="progress"
         steps={6}
         position="static"
-        activeStep={this.state.activeStep}
+        activeStep={progress}
         classes={classes}
       />  
+      <span>{this.props.progress}</span>
+      </div>
     );
   }
 }
 
 ProgressBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  progress: PropTypes.number
 };
 
 export default withStyles(styles)(ProgressBar);

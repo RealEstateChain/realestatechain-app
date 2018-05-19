@@ -27,7 +27,8 @@ class Tasks extends React.Component {
 
     this.state = {
       imageURL: '',
-      checked: this.props.checkedIndexes
+      checked: this.props.checkedIndexes,
+      progress: this.props.user.walletProgress
     };
 
     this.handleUploadImage = this.handleUploadImage.bind(this);
@@ -35,19 +36,25 @@ class Tasks extends React.Component {
 
   handleUploadImage(ev)  {
     ev.preventDefault();
+    
+    console.log(this.props)
+    let url = 'https://localhost:3000/upload'
 
-    const data = new FormData();
-    data.append('file', this.uploadInput.files[0]);
-    data.append('filename', "testUpload");
+    if (this.props.file) {
+      const data = new FormData();
+      data.append('file', this.uploadInput.files[0]);
+      data.append('filename', "testUpload");
 
-    fetch('http://localhost:3000/upload', {
-      method: 'POST',
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+      fetch(url, {
+        method: 'POST',
+        body: data,
+      }).then((response) => {
+        response.json().then((body) => {
+          this.setState({ imageURL: `http://localhost:3000/${body.file}` });
+        });
       });
-    });
+    }
+    
   }
 
   handleToggle = value => () => {
@@ -62,31 +69,29 @@ class Tasks extends React.Component {
     }
 
     this.setState({
-      checked: newChecked
+      checked: newChecked,
+      progress: this.state.progress + 1
     });
   };
 
   render() {
-    const { classes, tasksIndexes, tasks, accounts } = this.props;
+    const { classes, tasksIndexes, tasks, accounts, user } = this.props;
     return (
       <RegularCard
         plainCard
-        cardTitle="Property Wallet Strength &nbsp;&nbsp;&nbsp; 50%"
+        cardTitle="Property Wallet Strength &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 50%"
         content={
           <div>
-            <ProgressBar />
+            <ProgressBar progress={this.state.progress} />
             <Table
               tableHeaderColor="primary"
               tableData={[
                 [<TaskButton 
-                  buttonText="Upload Photos" 
-                  buttonAction={this.handleUploadImage} 
-                  buttonContent={
-                    <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-                  } />, "50% Boost"],
-                [<TaskButton buttonText="Upload Property Data" />, "50% Boost"],
-                [<TaskButton buttonText="Upload Floorplan" />, "Complete"],
-                [<TaskButton buttonText="Get Verified" />, "Complete"]
+                  buttonContent="Upload Photos" 
+                  buttonAction={this.handleUploadImage} /> , "50% Boost"],
+                [<TaskButton buttonContent="Upload Property Data" buttonAction={this.handleToggle} />, "50% Boost"],
+                [<TaskButton buttonContent="Upload Floorplan" buttonAction={this.handleToggle} />, "Complete"],
+                [<TaskButton buttonContent="Get Verified" buttonAction={this.handleToggle}/>, "Complete"]
               ]}
             />
           </div>
@@ -99,7 +104,8 @@ class Tasks extends React.Component {
 Tasks.propTypes = {
   classes: PropTypes.object.isRequired,
   tasksIndexes: PropTypes.arrayOf(PropTypes.number),
-  tasks: PropTypes.arrayOf(PropTypes.node)
+  tasks: PropTypes.arrayOf(PropTypes.node),
+  user: PropTypes.object
 };
 
 export default withStyles(tasksStyle)(Tasks);

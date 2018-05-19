@@ -11,19 +11,19 @@ const styles = theme => ({
 });
 
 function TaskButton(props) {
-  const { classes, buttonText, buttonAction } = props;
+  const { classes, buttonAction, buttonContent } = props;
 
   return (
     <Button className={classes.button} onClick={buttonAction || ( () => {})} data-something="something">
-      { buttonText }
+      { buttonContent }
     </Button>
   );
 }
 
 TaskButton.propTypes = {
   classes: PropTypes.object.isRequired,
-  buttonText: PropTypes.string.isRequired,
-  buttonAction: PropTypes.func
+  buttonContent: PropTypes.string.isRequired,
+  buttonAction: PropTypes.func,
 };
 
 export default withStyles(styles)(TaskButton);

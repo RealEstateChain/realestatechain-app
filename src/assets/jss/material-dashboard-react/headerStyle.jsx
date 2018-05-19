@@ -54,11 +54,16 @@ const headerStyle = theme => ({
       }
     }
   },
+  headerRight: {
+    display: "flex",
+  },
   accountInfo: {
-
+    display: "flex",
+    alignItems: "center",
+    paddingRight: "10px"
   },
   rezTokenLabel: {
-    marginLeft: "0.2em"
+    marginLeft: "0.3em"
   },
   title: {
     ...defaultFont,

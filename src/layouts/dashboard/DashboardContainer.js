@@ -8,6 +8,7 @@ import { withStyles } from "material-ui";
 const mapStateToProps = state => {
   return {
     accounts: state.accounts,
+    user: state.user,
     SimpleStorage: state.contracts.SimpleStorage,
     TutorialToken: state.contracts.TutorialToken,
     REZToken: state.contracts.REZToken,
