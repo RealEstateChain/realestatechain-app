@@ -54,6 +54,7 @@
     "zeppelin-solidity": "^1.9.0"
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
     "@material-ui/icons": "^1.0.0-beta.43",
     "classnames": "^2.2.5",
     "material-ui": "^1.0.0-beta.44",

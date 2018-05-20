@@ -15,7 +15,8 @@ import {
   Table,
   Button,
   TaskButton,
-  ProgressBar
+  ProgressBar,
+  List
 } from "../../components";
 import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
 
@@ -83,7 +84,8 @@ class Tasks extends React.Component {
         content={
           <div>
             <ProgressBar progress={this.state.progress} />
-            <Table
+            <List />
+            {/*<Table
               tableHeaderColor="primary"
               tableData={[
                 [<TaskButton 
@@ -93,7 +95,7 @@ class Tasks extends React.Component {
                 [<TaskButton buttonContent="Upload Floorplan" buttonAction={this.handleToggle} />, "Complete"],
                 [<TaskButton buttonContent="Get Verified" buttonAction={this.handleToggle}/>, "Complete"]
               ]}
-            />
+            />*/}
           </div>
         }
       />

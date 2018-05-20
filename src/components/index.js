@@ -49,6 +49,9 @@ import Tasks from "./Tasks/Tasks.jsx";
 import TaskButton from "./Tasks/TaskButton.js";
 import ProgressBar from "./Tasks/ProgressBar.js";
 
+import List from "./List.jsx";
+import TaskItem from "./TaskItem.jsx";
+
 // ##############################
 // // // Typography
 // #############################
@@ -88,6 +91,9 @@ export {
   Tasks,
   TaskButton,
   ProgressBar,
+  //List 
+  List,
+  TaskItem,
   // Typography
   P,
   Quote,
