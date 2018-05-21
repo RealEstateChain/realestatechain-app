@@ -17,6 +17,12 @@ const mapStateToProps = state => {
   }
 }
 
-const DashboardContainer = drizzleConnect(Dashboard, mapStateToProps);
+const mapDispatchToProps = dispatch => {
+  return {
+  	completeTask: (task) => { dispatch({ type: 'COMPLETE_TASK', payload: task }) }
+  }
+}
+
+const DashboardContainer = drizzleConnect(Dashboard, mapStateToProps, mapDispatchToProps);
 
 export default DashboardContainer

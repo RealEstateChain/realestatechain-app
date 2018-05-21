@@ -51,7 +51,7 @@ class Dashboard extends Component {
                 <TabPanel />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
-                <Tasks user={this.props.user} />
+                <Tasks { ...rest } />
               </ItemGrid>
             </Grid>
           </div>

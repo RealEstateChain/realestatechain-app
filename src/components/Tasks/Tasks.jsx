@@ -78,27 +78,8 @@ class Tasks extends React.Component {
   render() {
     const { classes, tasksIndexes, tasks, accounts, user } = this.props;
     return (
-      <RegularCard
-        plainCard
-        cardTitle="Property Wallet Strength &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 50%"
-        content={
-          <div>
-            <ProgressBar progress={this.state.progress} />
-            <List />
-            {/*<Table
-              tableHeaderColor="primary"
-              tableData={[
-                [<TaskButton 
-                  buttonContent="Upload Photos" 
-                  buttonAction={this.handleUploadImage} /> , "50% Boost"],
-                [<TaskButton buttonContent="Upload Property Data" buttonAction={this.handleToggle} />, "50% Boost"],
-                [<TaskButton buttonContent="Upload Floorplan" buttonAction={this.handleToggle} />, "Complete"],
-                [<TaskButton buttonContent="Get Verified" buttonAction={this.handleToggle}/>, "Complete"]
-              ]}
-            />*/}
-          </div>
-        }
-      />
+      <List user={user} completeTask={this.props.completeTask} />
+      
     );
   }
 }
@@ -107,7 +88,8 @@ Tasks.propTypes = {
   classes: PropTypes.object.isRequired,
   tasksIndexes: PropTypes.arrayOf(PropTypes.number),
   tasks: PropTypes.arrayOf(PropTypes.node),
-  user: PropTypes.object
+  user: PropTypes.object,
+  completeTask: PropTypes.func
 };
 
 export default withStyles(tasksStyle)(Tasks);

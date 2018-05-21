@@ -1,6 +1,10 @@
 const initialState = {
   data: null,
-  walletProgress: 5
+  walletProgress: 5,
+  uploadedPhotos: false,
+  uploadedFloorplan: false,
+  verified: true,
+  uploadedPropData: true,
 }
 
 const userReducer = (state = initialState, action) => {
@@ -21,7 +25,14 @@ const userReducer = (state = initialState, action) => {
   if (action.type === 'UPDATE_WALLET_PROGRESS')
   {
     return Object.assign({}, state, {
-      walletProgress: state.walletProgress + action.payload.increment
+      walletProgress: state.walletProgress + action.payload
+    })
+  }
+
+  if (action.type === 'COMPLETE_TASK')
+  {
+    return Object.assign({}, state, {
+      [action.payload]: true
     })
   }
 
