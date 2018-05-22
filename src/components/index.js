@@ -49,7 +49,7 @@ import Tasks from "./Tasks/Tasks.jsx";
 import TaskButton from "./Tasks/TaskButton.js";
 import ProgressBar from "./Tasks/ProgressBar.js";
 
-import TaskList from "./List.jsx";
+import TaskList from "./TaskList.jsx";
 import TaskItem from "./TaskItem.jsx";
 
 // ##############################

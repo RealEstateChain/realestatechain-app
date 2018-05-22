@@ -16,7 +16,7 @@ import {
   Button,
   TaskButton,
   ProgressBar,
-  List
+  TaskList
 } from "../../components";
 import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
 
@@ -78,7 +78,7 @@ class Tasks extends React.Component {
   render() {
     const { classes, tasksIndexes, tasks, accounts, user } = this.props;
     return (
-      <List user={user} completeTask={this.props.completeTask} />
+      <TaskList user={user} completeTask={this.props.completeTask} />
       
     );
   }
