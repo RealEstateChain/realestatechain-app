@@ -52,6 +52,8 @@ import ProgressBar from "./Tasks/ProgressBar.js";
 import TaskList from "./TaskList.jsx";
 import TaskItem from "./TaskItem.jsx";
 
+import UploadContent from "./UploadContent.jsx";
+
 // ##############################
 // // // Typography
 // #############################
@@ -94,6 +96,8 @@ export {
   //List 
   TaskList,
   TaskItem,
+
+  UploadContent,
   // Typography
   P,
   Quote,

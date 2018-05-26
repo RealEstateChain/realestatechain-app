@@ -17,9 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import DoneIcon from '@material-ui/icons/Done';
 
-//import * as _ from 'lodash'
-//import * as Enums from '../Enums'
-
+//import { UploadContent } from '../components';
 
 class TaskItem extends React.Component {
   constructor(props) {
@@ -54,7 +52,6 @@ class TaskItem extends React.Component {
           primary={primary}
           secondary={secondary}
         />
-
         <ListItemSecondaryAction>
         {done &&
           <IconButton aria-label="Done">
