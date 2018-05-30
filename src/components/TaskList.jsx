@@ -18,7 +18,8 @@ import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DoneIcon from '@material-ui/icons/Done';
 
-import { TaskItem } from '../components';
+import { TaskItem, UploadModal } from '../components';
+
 
 const styles = theme => ({
   root: {
@@ -35,13 +36,27 @@ const styles = theme => ({
 });
 
 class TaskList extends React.Component {
-  state = {
-    secondary: true,
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      secondary: true,
+      modalIsOpen: false,
+    };
+
+    this.handleTask = this.handleTask.bind(this);
+  }
+  
+
+  handleTask(task) {
+    if (task.indexOf('upload') > -1) {
+      this.setState({ modalIsOpen: true });
+    }
+  }
 
   render() {
     const { classes, user } = this.props;
-    const { secondary } = this.state;
+    const { secondary, modalIsOpen } = this.state;
 
     return (
       <div className={classes.root}>
@@ -57,7 +72,7 @@ class TaskList extends React.Component {
                     primary="Upload Photos"
                     secondary={this.state.secondary ? 'Show off your user, all image types accepted' : null}
                     done={user ? user.uploadedPhotos : false}
-                    action={() => this.props.completeTask('uploadedPhotos')} />
+                    action={() => this.handleTask('upload') } />
                   <TaskItem 
                     primary="Upload Floorplan"
                     secondary={this.state.secondary ? 'Show off the layout of your user' : null}
@@ -77,6 +92,7 @@ class TaskList extends React.Component {
             </div>
           </Grid>
         </Grid>
+        <UploadModal open={modalIsOpen} />
       </div>
     );
   }
