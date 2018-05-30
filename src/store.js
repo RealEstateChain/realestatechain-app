@@ -9,27 +9,31 @@ import { generateContractsInitialState } from 'drizzle'
 import drizzleOptions from './drizzleOptions'
 
 // Redux DevTools
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const routingMiddleware = routerMiddleware(browserHistory)
-const sagaMiddleware = createSagaMiddleware()
 
-const initialState = {
-  contracts: generateContractsInitialState(drizzleOptions)
-}
+export default  () => {
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
-  reducer,
-  initialState,
-  composeEnhancers(
-    applyMiddleware(
-      thunkMiddleware,
-      routingMiddleware,
-      sagaMiddleware
+  const routingMiddleware = routerMiddleware(browserHistory)
+  const sagaMiddleware = createSagaMiddleware()
+
+
+  const initialState = {
+    
+  }
+
+  const store = createStore(
+    reducer,
+    initialState,
+    composeEnhancers(
+      applyMiddleware(
+        thunkMiddleware,
+        routingMiddleware,
+        sagaMiddleware
+      )
     )
   )
-)
 
-sagaMiddleware.run(rootSaga)
-
-export default store
+  sagaMiddleware.run(rootSaga)
+  return store;
+}

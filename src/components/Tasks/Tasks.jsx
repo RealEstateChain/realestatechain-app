@@ -18,7 +18,7 @@ import {
   ProgressBar,
   TaskList
 } from "../../components";
-import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
+//import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
 
 import tasksStyle from "../../assets/jss/material-dashboard-react/tasksStyle.jsx";
 

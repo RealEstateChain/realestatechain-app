@@ -1,19 +1,28 @@
-import Dashboard from './Dashboard'
-import { drizzleConnect } from 'drizzle-react'
+import Dashboard from './Dashboard';
+import { connect } from 'react-redux';
+import React from 'react';
 import { withStyles } from "material-ui";
 
 //import appStyle from "../../assets/jss/material-dashboard-react/appStyle.jsx";
+
+class DashboardContainer extends React.Component {
+	render() {
+		return (
+			<Dashboard { ...this.props } />
+		)
+	}
+}
 
 // May still need this even with data function to refresh component on updates for this contract.
 const mapStateToProps = state => {
   return {
     accounts: state.accounts,
     user: state.user,
-    SimpleStorage: state.contracts.SimpleStorage,
-    TutorialToken: state.contracts.TutorialToken,
-    REZToken: state.contracts.REZToken,
-    REDAToken: state.contracts.REDAToken,
-    drizzleStatus: state.drizzleStatus
+    // SimpleStorage: state.contracts.SimpleStorage,
+    // TutorialToken: state.contracts.TutorialToken,
+    // REZToken: state.contracts.REZToken,
+    // REDAToken: state.contracts.REDAToken,
+    // drizzleStatus: state.drizzleStatus
   }
 }
 
@@ -23,6 +32,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const DashboardContainer = drizzleConnect(Dashboard, mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
 
-export default DashboardContainer
+//export default DashboardContainer

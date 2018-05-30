@@ -10,7 +10,7 @@ import {
   Button
 } from "material-ui";
 import cx from "classnames";
-import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
+//import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
 
 import headerStyle from "../../assets/jss/material-dashboard-react/headerStyle.jsx";
 import logo from "../../assets/img/rec-logo.png";
@@ -40,11 +40,9 @@ function Header({ ...props }) {
           <Button href="#" className={classes.title}>
            <img src={logo} />
           </Button>
-          <AccountData accountIndex="0" units="ether" precision="3" />
         </div>
         <Hidden smDown implementation="css" className={classes.headerRight}>
           <div className={classes.accountInfo}>
-            <ContractData contract="REZToken" method="balanceOf" methodArgs={[props.accounts[0]]} />
             <span className={classes.rezTokenLabel}>REZ</span>
           </div>
           <HeaderLinks />
