@@ -90,9 +90,10 @@ class TaskList extends React.Component {
                     action={() => this.props.completeTask('verified')} />
               </List>
             </div>
+            
+        <UploadModal open={modalIsOpen} />
           </Grid>
         </Grid>
-        <UploadModal open={modalIsOpen} />
       </div>
     );
   }

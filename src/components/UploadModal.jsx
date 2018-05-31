@@ -18,6 +18,13 @@ const styles = theme => ({
   },
 });
 
+const modalStyle = {
+  top: 400,
+  left: 400,
+  transform: `translate(-400, -400)`,
+  color: 'white',
+};
+
 class UploadModal extends React.Component {
   constructor(props) {
     super(props);
@@ -81,15 +88,7 @@ class UploadModal extends React.Component {
   }
 
   render() {
-    // const { 
-    //   showProgressBar, 
-    //   handleFileSelected, 
-    //   updateProgressBar, 
-    //   checkIfFileIsIncorrectFiletype, 
-    //   cancelButtonClicked,
-    //   showInvalidFileTypeMessage,
-    //   resetCancelButtonClicked 
-    // } = this.props;
+    const { classes } = this.props;
 
     return (
       <div>
@@ -99,7 +98,7 @@ class UploadModal extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
           >
-          <div>
+          <div style={modalStyle} className={classes.paper}>
             <FileInput
               readAs='binary'
               multiple
