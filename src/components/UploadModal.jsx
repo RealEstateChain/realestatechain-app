@@ -26,35 +26,33 @@ const modalStyle = {
 };
 
 class UploadModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cancelButtonClicked: false,
-      open: props.open,
+  state = {
+    cancelButtonClicked: false,
+    open: false,
+  };
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.open != state.open) {
+      return {
+        open: props.open
+      };
     }
+
+    return null;
   }
 
   handleOpen = () => {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  componentDidUpdate = (props, state) => {
-    if (props.open != state.open) {
-      this.setState({ open: props.open });
-    }
-  };
 
   afterOpenModal = () => {
     // references are now sync'd and can be accessed.
     //this.subtitle.style.color = '#f00';
   };
 
-  handleClose = () => {
-    this.setState({open: false});
+  componentWillUnmout(state) {
+    debugger;
   }
 
   cancelButtonClicked = () => {
@@ -88,15 +86,15 @@ class UploadModal extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, isOpen, handleClose } = this.props;
 
     return (
       <div>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={this.props.isOpen}
+          onClose={handleClose}
           >
           <div style={modalStyle} className={classes.paper}>
             <FileInput
@@ -120,7 +118,7 @@ class UploadModal extends React.Component {
 }
 
 UploadModal.propTypes = {
-  open: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 }
 
 export default withStyles(styles)(UploadModal);

@@ -17,6 +17,9 @@ import Typography from '@material-ui/core/Typography';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import DoneIcon from '@material-ui/icons/Done';
 
+
+import { UploadModal } from '../components';
+
 //import { UploadContent } from '../components';
 
 class TaskItem extends React.Component {
@@ -24,7 +27,8 @@ class TaskItem extends React.Component {
     super(props);
     this.state = {
       done: props.done,
-      secondary: true
+      secondary: true,
+      modalIsOpen: false,
     }
   }
 
@@ -36,30 +40,38 @@ class TaskItem extends React.Component {
     });
   };
 
+  handleModalClose = () => {
+    this.setState({ modalIsOpen: false });
+  }
+
   render() {
     const { primary, secondary, done, action } = this.props;
     return (
-      <ListItem 
-        onClick={action}
-        button
-      >
-        <ListItemAvatar>
-          <Avatar>
-            <CloudUploadIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={primary}
-          secondary={secondary}
-        />
-        <ListItemSecondaryAction>
-        {done &&
-          <IconButton aria-label="Done">
-            <DoneIcon />
-          </IconButton>
-        }
-        </ListItemSecondaryAction> 
-      </ListItem>
+      <div>
+        <ListItem 
+          onClick={() => { this.setState({ modalIsOpen: true }) } }
+          button
+        >
+          <ListItemAvatar>
+            <Avatar>
+              <CloudUploadIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary={primary}
+            secondary={secondary}
+          />
+          <ListItemSecondaryAction>
+          {done &&
+            <IconButton aria-label="Done">
+              <DoneIcon />
+            </IconButton>
+          }
+          </ListItemSecondaryAction> 
+        </ListItem>
+
+        <UploadModal handleClose={this.handleModalClose} isOpen={this.state.modalIsOpen} />
+      </div>
     )
   }
 }
