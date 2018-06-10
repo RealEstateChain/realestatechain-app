@@ -3,6 +3,8 @@ export const ActionTypes = {
     UPLOAD_PROGRESS: 'UPLOAD_PROGRESS',
     UPLOAD_SUCCESS:  'UPLOAD_SUCCESS',
     UPLOAD_FAILURE:  'UPLOAD_FAILURE',
+
+    COMPLETE_TASK: 'COMPLETE_TASK',
 };
 export const requestFileUpload = (file) => ({
     type: ActionTypes.UPLOAD_REQUEST,
@@ -22,4 +24,10 @@ export const fileUploadFailure = (file, err) => ({
     payload: err,
     error: true,
     meta: { file },
+});
+
+
+export const completeTask = (task) => ({
+    type: ActionTypes.COMPLETE_TASK, 
+    payload: task,
 });
