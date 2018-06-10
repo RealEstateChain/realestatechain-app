@@ -4,7 +4,8 @@ import { withStyles } from "material-ui";
 import {
 	requestFileUpload,
 	completeTask,
-
+	addImageToProp,
+	
 	sendTokens,
 	startLogin,
 	createNewToken,
@@ -31,6 +32,7 @@ const mapDispatchToProps = dispatch => {
   return {
   	completeTask: (task) => { dispatch(completeTask(task)) },
   	handleFileUpload: (file) => { dispatch(requestFileUpload(file)) },
+  	addImageToProp: (image) => { dispatch(addImageToProp(image)) },
     // coming later:
     send: () => dispatch(sendTokens()),
     startLogin: () => dispatch(startLogin()),

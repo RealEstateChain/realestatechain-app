@@ -3,7 +3,7 @@ export const ActionTypes = {
     UPLOAD_PROGRESS: 'UPLOAD_PROGRESS',
     UPLOAD_SUCCESS:  'UPLOAD_SUCCESS',
     UPLOAD_FAILURE:  'UPLOAD_FAILURE',
-
+    ADD_IMAGE: 'ADD_IMAGE',
     COMPLETE_TASK: 'COMPLETE_TASK',
 };
 export const requestFileUpload = (file) => ({
@@ -25,6 +25,11 @@ export const fileUploadFailure = (file, err) => ({
     error: true,
     meta: { file },
 });
+
+export const addImageToProp = (image) => ({
+    type: ActionTypes.ADD_IMAGE,
+    payload: image,
+})
 
 
 export const completeTask = (task) => ({
