@@ -78,7 +78,7 @@ class Tasks extends React.Component {
   render() {
     const { classes, tasksIndexes, tasks, accounts, user } = this.props;
     return (
-      <TaskList user={user} completeTask={this.props.completeTask} />
+      <TaskList user={user} completeTask={this.props.completeTask} handleFileUpload={this.props.handleFileUpload} />
       
     );
   }

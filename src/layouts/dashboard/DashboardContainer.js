@@ -1,6 +1,7 @@
 import Dashboard from './Dashboard'
 import { drizzleConnect } from 'drizzle-react'
 import { withStyles } from "material-ui";
+import actions from '../../actions';
 
 //import appStyle from "../../assets/jss/material-dashboard-react/appStyle.jsx";
 
@@ -19,7 +20,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-  	completeTask: (task) => { dispatch({ type: 'COMPLETE_TASK', payload: task }) }
+  	completeTask: (task) => { dispatch({ type: 'COMPLETE_TASK', payload: task }) },
+  	handleFileUpload: (file) => { dispatch(actions.requestFileUpload(file)) },
+    send: () => dispatch(actions.sendTokens()),
+    startLogin: () => dispatch(actions.startLogin()),
+    createNewToken: (token) => dispatch(actions.createNewToken(token)),
+    setModalMessage: (config) => dispatch(actions.setModalMessage(config)),
   }
 }
 

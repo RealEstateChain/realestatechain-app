@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import FileInput from 'react-simple-file-input';
 
 import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+
 import { withStyles } from '@material-ui/core/styles';
 
-//import * as _ from 'lodash'
-//import * as Enums from '../Enums'
-
+//todo: move this into a jss file
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -86,7 +86,7 @@ class UploadModal extends React.Component {
   }
 
   render() {
-    const { classes, isOpen, handleClose } = this.props;
+    const { classes, isOpen, handleClose, handleFileUpload } = this.props;
 
     return (
       <div>
@@ -110,6 +110,7 @@ class UploadModal extends React.Component {
               onCancel={ this.showInvalidFileTypeMessage }
               onAbort={ this.resetCancelButtonClicked }
              />
+              <Button onClick={this.handleOpen}>Open Modal</Button>
           </div>
         </Modal>
       </div>
@@ -119,6 +120,8 @@ class UploadModal extends React.Component {
 
 UploadModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleFileUpload: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(UploadModal);
