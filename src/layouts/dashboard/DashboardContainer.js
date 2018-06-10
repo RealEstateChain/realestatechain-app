@@ -18,6 +18,7 @@ const mapStateToProps = state => {
   return {
     accounts: state.accounts,
     user: state.user,
+    propWallet: state.propWallet,
     SimpleStorage: state.contracts.SimpleStorage,
     TutorialToken: state.contracts.TutorialToken,
     REZToken: state.contracts.REZToken,

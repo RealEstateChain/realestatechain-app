@@ -1,6 +1,6 @@
 //server actions
 
-import config from '../config/aws'
+import config from '../../config/aws'
 
 const getData = (hash) => {
   return fetch(`${config.gateway}/aws/${hash}`)

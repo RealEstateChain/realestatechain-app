@@ -2,21 +2,14 @@ import React, { Component } from 'react'
 import { Grid, InputLabel, withStyles, Typography } from "material-ui";
 
 import {
-  ProfileCard,
-  RegularCard,
-  Table,
-  Button,
-  Badge,
-  CustomInput,
   ItemGrid,
   Header,
   Footer,
   TabPanel,
-  ProgressBar
+  Tasks,
 } from "../../components";
 
 import UserProfile from "../../user/layouts/profile/Profile.js";
-import { Tasks } from "../../components";
 
 import {
   Dashboard as DashboardIcon,
@@ -36,7 +29,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes, propWallet, ...rest } = this.props;
     return(
       <div className={classes.wrapper}>
 
@@ -48,7 +41,7 @@ class Dashboard extends Component {
           <div className={classes.content}>
             <Grid container>
               <ItemGrid xs={12} sm={12} md={8}>
-                <TabPanel />
+                <TabPanel images={propWallet.images} { ...rest } />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
                 <Tasks { ...rest } />

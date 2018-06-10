@@ -57,19 +57,6 @@ const styles = theme => ({
 });
 
 
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-
 class TabPanel extends React.Component {
   state = {
     value: 0,
@@ -80,7 +67,7 @@ class TabPanel extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, images } = this.props;
     const { value } = this.state;
 
     return (
@@ -101,14 +88,13 @@ class TabPanel extends React.Component {
             label="Floorplan"
           />
         </Tabs>
-        {value === 0 && <TabContainer>
-            <Grid container>
-              <ItemGrid xs={12} sm={12} md={12}>
-                <img width="100%" src="https://media.architecturaldigest.com/photos/5ae77bc796f061514d5668e7/4:3/w_670/315470384.jpg"/>
-              </ItemGrid>
-            </Grid>
-          </TabContainer>}
-        {value === 1 && <TabContainer>No floor plan exists yet. Upload one now!</TabContainer>}
+        {value === 0 && 
+          <Grid container>
+            <ItemGrid xs={12} sm={12} md={12}>
+              <img width="100%" src={images[0]}/> 
+            </ItemGrid>
+          </Grid>}
+        {value === 1 && <Typography component="div" style={{ padding: 8 * 3 }}>No floor plan exists yet. Upload one now!</Typography>}
       </div>
     );
   }
