@@ -91,7 +91,11 @@ class TabPanel extends React.Component {
         {value === 0 && 
           <Grid container>
             <ItemGrid xs={12} sm={12} md={12}>
-              <img width="100%" src={images[0]}/> 
+              {images.map((image, index) => (
+                <div key={index} onClick={() => {return;} }>
+                  <img width="100%" src={image}/> 
+                </div>
+              ))}
             </ItemGrid>
           </Grid>}
         {value === 1 && <Typography component="div" style={{ padding: 8 * 3 }}>No floor plan exists yet. Upload one now!</Typography>}
@@ -102,6 +106,7 @@ class TabPanel extends React.Component {
 
 TabPanel.propTypes = {
   classes: PropTypes.object.isRequired,
+  images: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(TabPanel);

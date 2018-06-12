@@ -102,7 +102,7 @@ class UploadModal extends React.Component {
               multiple
              
               onLoadStart={ this.showProgressBar }
-              onLoad={ this.handleFileSelected }
+              onLoad={ handleFileUpload }
               onProgress={ this.updateProgressBar }
              
               abortIf={ this.cancelButtonClicked }
@@ -110,7 +110,7 @@ class UploadModal extends React.Component {
               onCancel={ this.showInvalidFileTypeMessage }
               onAbort={ this.resetCancelButtonClicked }
              />
-              <Button onClick={this.handleOpen}>Open Modal</Button>
+              <Button onClick={()=> {}}>Save Image</Button>
           </div>
         </Modal>
       </div>

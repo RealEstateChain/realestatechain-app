@@ -1,6 +1,5 @@
-import { call, put, take, all, fork } from 'redux-saga/effects'
-import { takeEvery } from 'redux-saga'
-import { ActionTypes, uploadProgress, uploadSuccess, uploadFailure } from '../actions';
+import { call, put, take, all, fork, takeEvery } from 'redux-saga/effects'
+import { ActionTypes, uploadProgress, uploadSuccess, uploadFailure, addImageToProp } from '../actions';
 import { addData } from '../services';
 
 //import { createUploadFileChannel } from './createUploadFileChannel';
@@ -16,6 +15,8 @@ export function* watchUploadRequestSaga() {
 
 // Upload the specified file
 export function* uploadFileSaga(file) {
+  yield put(addImageToProp(file));
+  return;
   const channel = yield call(addData, '/some/path', file);
   while (true) {
 	  const { progress = 0, err, success } = yield take(channel);
@@ -25,8 +26,27 @@ export function* uploadFileSaga(file) {
 	  }
 	  if (success) {
       yield put(uploadSuccess(file));
+      yield put(addImageToProp(file));
       return;
 	  }
 	  yield put(uploadProgress(file, progress));
   }
+}
+
+const API_KEY = '<website api key>';
+const API_ENDPOINT = `https://api.realestatechain.io/aws/getImages?api_key=${API_KEY}`;
+
+const fetchImages = (propId) => {
+  return fetch(API_ENDPOINT + `&pid=${propId}`).then(function (response) {
+    return response.json().then(function (json) {
+      return json.photos.photo.map(
+        ({uri}) => `https://api.realestatechain.io/${uri}.jpg`
+      );
+    })
+  })
+};
+
+export function* loadImages() {
+  const images = yield fetchImages();
+  console.log(images)
 }
