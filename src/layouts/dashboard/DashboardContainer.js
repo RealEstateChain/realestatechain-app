@@ -21,7 +21,6 @@ const mapStateToProps = state => {
     user: state.user,
     propWallet: state.propWallet,
     SimpleStorage: state.contracts.SimpleStorage,
-    TutorialToken: state.contracts.TutorialToken,
     REZToken: state.contracts.REZToken,
     REDAToken: state.contracts.REDAToken,
     drizzleStatus: state.drizzleStatus
