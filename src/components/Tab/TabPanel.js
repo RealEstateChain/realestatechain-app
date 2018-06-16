@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Tabs, { Tab } from 'material-ui/Tabs';
@@ -8,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import { greenCardColor, darkModeColor } from "../../assets/jss/material-dashboard-react.jsx";
 
 import ItemGrid from '../Grid/ItemGrid.jsx';
+import ImageCarousel from "../ImageCarousel.jsx"
 
 const styles = theme => ({
   root: {
@@ -69,36 +71,28 @@ class TabPanel extends React.Component {
   render() {
     const { classes, images } = this.props;
     const { value } = this.state;
+    const settings = {
+      customPaging: function(i) {
+        return (
+          <a>
+            <img src={`${images[i]}`} />
+          </a>
+        );
+      },
+      dots: true,
+      dotsClass: "slick-dots slick-thumb",
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
 
     return (
       <div className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={this.handleChange}
-          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
-        >
-          <Tab
-            disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-            label="Pictures"
-          />
-          <Tab
-            disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-            label="Floorplan"
-          />
-        </Tabs>
-        {value === 0 && 
-          <Grid container>
-            <ItemGrid xs={12} sm={12} md={12}>
-              {images.map((image, index) => (
-                <div key={index} onClick={() => {return;} }>
-                  <img width="100%" src={image}/> 
-                </div>
-              ))}
-            </ItemGrid>
-          </Grid>}
-        {value === 1 && <Typography component="div" style={{ padding: 8 * 3 }}>No floor plan exists yet. Upload one now!</Typography>}
+        <div>
+          <h3>Pictures of this property</h3>
+          <ImageCarousel images={images} />
+        </div>
       </div>
     );
   }

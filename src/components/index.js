@@ -30,6 +30,7 @@ import Footer from "./Footer/Footer.jsx";
 
 import ItemGrid from "./Grid/ItemGrid.jsx";
 
+import ImageCarousel from "./ImageCarousel.jsx";
 // ##############################
 // // // Header
 // #############################
@@ -82,6 +83,8 @@ export {
   Footer,
   // Grid
   ItemGrid,
+
+  ImageCarousel,
   // Header
   Header,
   HeaderLinks,
