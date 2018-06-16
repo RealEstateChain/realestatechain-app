@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 import { greenCardColor, darkModeColor } from "../../assets/jss/material-dashboard-react.jsx";
 
 import ItemGrid from '../Grid/ItemGrid.jsx';
+import ImageCarousel from "../ImageCarousel.jsx";
 
 const styles = theme => ({
   root: {
@@ -54,6 +55,9 @@ const styles = theme => ({
   typography: {
     padding: theme.spacing.unit * 3,
   },
+  title: {
+    margin: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 4}px`,
+  },
 });
 
 
@@ -72,33 +76,10 @@ class TabPanel extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={this.handleChange}
-          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
-        >
-          <Tab
-            disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-            label="Pictures"
-          />
-          <Tab
-            disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-            label="Floorplan"
-          />
-        </Tabs>
-        {value === 0 && 
-          <Grid container>
-            <ItemGrid xs={12} sm={12} md={12}>
-              {images.map((image, index) => (
-                <div key={index} onClick={() => {return;} }>
-                  <img width="100%" src={image}/> 
-                </div>
-              ))}
-            </ItemGrid>
-          </Grid>}
-        {value === 1 && <Typography component="div" style={{ padding: 8 * 3 }}>No floor plan exists yet. Upload one now!</Typography>}
+        <Typography variant="title"  className={classes.title}>
+          Pictures of the property
+        </Typography>
+        <ImageCarousel images={images} />
       </div>
     );
   }
