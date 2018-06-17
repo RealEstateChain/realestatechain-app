@@ -36,26 +36,23 @@ const styles = theme => ({
 });
 
 class TaskList extends React.Component {
+  state = {
+    secondary: true,
+    modalIsOpen: false,
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      secondary: true,
-      modalIsOpen: false,
-    };
-
-    this.handleTask = this.handleTask.bind(this);
-  }
-  
-
-  handleTask(task) {
+  handleTask = task => () => {
     if (task.indexOf('upload') > -1) {
       this.setState({ modalIsOpen: true });
     }
   }
 
+  handleModalClose = () => {
+    this.setState({ modalIsOpen: false });
+  }
+
   render() {
-    const { classes, user } = this.props;
+    const { classes, user, handleFileUpload } = this.props;
     const { secondary, modalIsOpen } = this.state;
 
     return (
@@ -72,7 +69,7 @@ class TaskList extends React.Component {
                     primary="Upload Photos"
                     secondary={this.state.secondary ? 'Show off your user, all image types accepted' : null}
                     done={user ? user.uploadedPhotos : false}
-                    action={() => this.handleTask('upload') } />
+                    action={() => this.setState({ modalIsOpen: true }) } />
                   <TaskItem 
                     primary="Upload Floorplan"
                     secondary={this.state.secondary ? 'Show off the layout of your user' : null}
@@ -90,9 +87,10 @@ class TaskList extends React.Component {
                     action={() => this.props.completeTask('verified')} />
               </List>
             </div>
+            
+            <UploadModal handleClose={this.handleModalClose} isOpen={this.state.modalIsOpen} handleFileUpload={handleFileUpload} />
           </Grid>
         </Grid>
-        <UploadModal open={modalIsOpen} />
       </div>
     );
   }
@@ -101,7 +99,8 @@ class TaskList extends React.Component {
 TaskList.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  completeTask: PropTypes.func.isRequired
+  completeTask: PropTypes.func.isRequired,
+  handleFileUpload: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(TaskList);

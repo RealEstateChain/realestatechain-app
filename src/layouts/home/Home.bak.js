@@ -22,7 +22,7 @@ class Home extends Component {
   }
 
   handleSendTokens() {
-    this.contracts.TutorialToken.methods.transfer(this.state.tokenRecipientAddress, this.state.tokenTransferAmount).send()
+    //this.contracts.TutorialToken.methods.transfer(this.state.tokenRecipientAddress, this.state.tokenTransferAmount).send()
   }
 
   handleInputChange(event) {
@@ -34,9 +34,9 @@ class Home extends Component {
     var storedData = this.props.drizzleStatus.initialized ? this.contracts.SimpleStorage.methods.storedData.data() : 'Loading...'
 
     // TutorialToken Vars
-    var tokenSymbol = this.props.drizzleStatus.initialized ? this.contracts.TutorialToken.methods.symbol.data() : ''
-    var tokenSupply = this.props.drizzleStatus.initialized ? this.contracts.TutorialToken.methods.totalSupply.data() : 'Loading...'
-    var tokenBalance = this.props.drizzleStatus.initialized ? this.contracts.TutorialToken.methods.balanceOf.data(this.props.accounts[0]) : 'Loading...'
+    //var tokenSymbol = this.props.drizzleStatus.initialized ? this.contracts.TutorialToken.methods.symbol.data() : ''
+    //var tokenSupply = this.props.drizzleStatus.initialized ? this.contracts.TutorialToken.methods.totalSupply.data() : 'Loading...'
+    //var tokenBalance = this.props.drizzleStatus.initialized ? this.contracts.TutorialToken.methods.balanceOf.data(this.props.accounts[0]) : 'Loading...'
 
     return(
       <main className="container">
@@ -57,7 +57,7 @@ class Home extends Component {
             <br/><br/>
           </div>
 
-          <div className="pure-u-1-1">
+          { /* <div className="pure-u-1-1">
             <h2>TutorialToken</h2>
             <p><strong>Total Supply</strong>: {tokenSupply} {tokenSymbol}</p>
             <p><strong>My Balance</strong>: {tokenBalance}</p>
@@ -67,8 +67,8 @@ class Home extends Component {
               <input name="tokenTransferAmount" type="number" value={this.state.tokenTransferAmount} onChange={this.handleInputChange} placeholder="Amount" />
               <button className="pure-button" type="button" onClick={this.handleSendTokens}>Send Tokens to {this.state.tokenRecipientAddress}</button>
             </form>
-          </div>
-        </div>
+          </div>*/}
+        </div> 
       </main>
     )
   }

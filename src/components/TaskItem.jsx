@@ -17,15 +17,15 @@ import Typography from '@material-ui/core/Typography';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import DoneIcon from '@material-ui/icons/Done';
 
+
+import { UploadModal } from '../components';
+
 //import { UploadContent } from '../components';
 
 class TaskItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      done: props.done,
-      secondary: true
-    }
+  state = {
+    done: this.props.done,
+    secondary: true
   }
 
   handleToggle = value => () => {
@@ -34,32 +34,35 @@ class TaskItem extends React.Component {
     this.setState({
       done: value,
     });
-  };
+  }
 
   render() {
     const { primary, secondary, done, action } = this.props;
     return (
-      <ListItem 
-        onClick={action}
-        button
-      >
-        <ListItemAvatar>
-          <Avatar>
-            <CloudUploadIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText
-          primary={primary}
-          secondary={secondary}
-        />
-        <ListItemSecondaryAction>
-        {done &&
-          <IconButton aria-label="Done">
-            <DoneIcon />
-          </IconButton>
-        }
-        </ListItemSecondaryAction> 
-      </ListItem>
+      <div>
+        <ListItem 
+          onClick={action}
+          button
+        >
+          <ListItemAvatar>
+            <Avatar>
+              <CloudUploadIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary={primary}
+            secondary={secondary}
+          />
+          <ListItemSecondaryAction>
+          {done &&
+            <IconButton aria-label="Done">
+              <DoneIcon />
+            </IconButton>
+          }
+          </ListItemSecondaryAction> 
+        </ListItem>
+
+      </div>
     )
   }
 }

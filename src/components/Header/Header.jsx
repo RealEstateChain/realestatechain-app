@@ -43,7 +43,7 @@ function Header({ ...props }) {
         </div>
         <Hidden smDown implementation="css" className={classes.headerRight}>
           <div className={classes.accountInfo}>
-            <span className={classes.rezTokenLabel}>REZ</span>
+            <span className={classes.rezTokenLabel}>2000 REZ</span>
           </div>
           <HeaderLinks />
         </Hidden>
@@ -65,7 +65,7 @@ function Header({ ...props }) {
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   color: PropTypes.oneOf(["primary", "info", "success", "warning", "grey"]),
-  accounts: PropTypes.object.isRequired,
+  accounts: PropTypes.object,
 };
 
 export default withStyles(headerStyle)(Header);

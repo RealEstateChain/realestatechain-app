@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import FileInput from 'react-simple-file-input';
 
 import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+
 import { withStyles } from '@material-ui/core/styles';
 
-//import * as _ from 'lodash'
-//import * as Enums from '../Enums'
-
+//todo: move this into a jss file
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -18,36 +18,41 @@ const styles = theme => ({
   },
 });
 
+const modalStyle = {
+  top: 400,
+  left: 400,
+  transform: `translate(-400, -400)`,
+  color: 'white',
+};
+
 class UploadModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cancelButtonClicked: false,
-      open: props.open,
+  state = {
+    cancelButtonClicked: false,
+    open: false,
+  };
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.open != state.open) {
+      return {
+        open: props.open
+      };
     }
+
+    return null;
   }
 
   handleOpen = () => {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  componentDidUpdate = (props, state) => {
-    if (props.open != state.open) {
-      this.setState({ open: props.open });
-    }
-  };
 
   afterOpenModal = () => {
     // references are now sync'd and can be accessed.
     //this.subtitle.style.color = '#f00';
   };
 
-  handleClose = () => {
-    this.setState({open: false});
+  componentWillUnmout(state) {
+    debugger;
   }
 
   cancelButtonClicked = () => {
@@ -81,31 +86,23 @@ class UploadModal extends React.Component {
   }
 
   render() {
-    // const { 
-    //   showProgressBar, 
-    //   handleFileSelected, 
-    //   updateProgressBar, 
-    //   checkIfFileIsIncorrectFiletype, 
-    //   cancelButtonClicked,
-    //   showInvalidFileTypeMessage,
-    //   resetCancelButtonClicked 
-    // } = this.props;
+    const { classes, isOpen, handleClose, handleFileUpload } = this.props;
 
     return (
       <div>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={this.props.isOpen}
+          onClose={handleClose}
           >
-          <div>
+          <div style={modalStyle} className={classes.paper}>
             <FileInput
               readAs='binary'
               multiple
              
               onLoadStart={ this.showProgressBar }
-              onLoad={ this.handleFileSelected }
+              onLoad={ handleFileUpload }
               onProgress={ this.updateProgressBar }
              
               abortIf={ this.cancelButtonClicked }
@@ -113,6 +110,7 @@ class UploadModal extends React.Component {
               onCancel={ this.showInvalidFileTypeMessage }
               onAbort={ this.resetCancelButtonClicked }
              />
+              <Button onClick={()=> {}}>Save Image</Button>
           </div>
         </Modal>
       </div>
@@ -121,7 +119,9 @@ class UploadModal extends React.Component {
 }
 
 UploadModal.propTypes = {
-  open: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleFileUpload: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(UploadModal);

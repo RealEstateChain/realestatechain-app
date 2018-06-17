@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 import { greenCardColor, darkModeColor } from "../../assets/jss/material-dashboard-react.jsx";
 
 import ItemGrid from '../Grid/ItemGrid.jsx';
+import ImageCarousel from "../ImageCarousel.jsx";
 
 const styles = theme => ({
   root: {
@@ -54,20 +55,10 @@ const styles = theme => ({
   typography: {
     padding: theme.spacing.unit * 3,
   },
+  title: {
+    margin: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 4}px`,
+  },
 });
-
-
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 
 class TabPanel extends React.Component {
@@ -80,35 +71,15 @@ class TabPanel extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, images } = this.props;
     const { value } = this.state;
 
     return (
       <div className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={this.handleChange}
-          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
-        >
-          <Tab
-            disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-            label="Pictures"
-          />
-          <Tab
-            disableRipple
-            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
-            label="Floorplan"
-          />
-        </Tabs>
-        {value === 0 && <TabContainer>
-            <Grid container>
-              <ItemGrid xs={12} sm={12} md={12}>
-                <img width="100%" src="https://media.architecturaldigest.com/photos/5ae77bc796f061514d5668e7/4:3/w_670/315470384.jpg"/>
-              </ItemGrid>
-            </Grid>
-          </TabContainer>}
-        {value === 1 && <TabContainer>No floor plan exists yet. Upload one now!</TabContainer>}
+        <Typography variant="title"  className={classes.title}>
+          Pictures of the property
+        </Typography>
+        <ImageCarousel images={images} />
       </div>
     );
   }
@@ -116,6 +87,7 @@ class TabPanel extends React.Component {
 
 TabPanel.propTypes = {
   classes: PropTypes.object.isRequired,
+  images: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(TabPanel);

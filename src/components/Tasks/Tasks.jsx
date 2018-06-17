@@ -1,24 +1,14 @@
 import React from "react";
 import {
   withStyles,
-  Checkbox,
-  IconButton,
-  Tooltip
 } from "material-ui";
 import { Edit, Close, Check } from "@material-ui/icons";
 
 import PropTypes from "prop-types";
 
 import {
-  ProfileCard,
-  RegularCard,
-  Table,
-  Button,
-  TaskButton,
-  ProgressBar,
   TaskList
 } from "../../components";
-//import { AccountData, ContractData, ContractForm } from 'drizzle-react-components';
 
 import tasksStyle from "../../assets/jss/material-dashboard-react/tasksStyle.jsx";
 
@@ -78,7 +68,7 @@ class Tasks extends React.Component {
   render() {
     const { classes, tasksIndexes, tasks, accounts, user } = this.props;
     return (
-      <TaskList user={user} completeTask={this.props.completeTask} />
+      <TaskList user={user} completeTask={this.props.completeTask} handleFileUpload={this.props.handleFileUpload} />
       
     );
   }

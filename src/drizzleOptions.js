@@ -1,6 +1,5 @@
 import ComplexStorage from './../build/contracts/ComplexStorage.json'
 import SimpleStorage from './../build/contracts/SimpleStorage.json'
-import TutorialToken from './../build/contracts/TutorialToken.json'
 import REZToken from './../build/contracts/REZToken.json'
 import REDAToken from './../build/contracts/REDAToken.json'
 
@@ -15,7 +14,6 @@ const drizzleOptions = {
   contracts: [
     ComplexStorage,
     SimpleStorage,
-    TutorialToken,
     REZToken,
     REDAToken
   ],
