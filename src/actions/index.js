@@ -5,6 +5,7 @@ export const ActionTypes = {
     UPLOAD_FAILURE:  'UPLOAD_FAILURE',
     ADD_IMAGE: 'ADD_IMAGE',
     COMPLETE_TASK: 'COMPLETE_TASK',
+    GOT_LISTINGS: 'GOT_LISTINGS',
 };
 export const requestFileUpload = (file) => ({
     type: ActionTypes.UPLOAD_REQUEST,
@@ -29,7 +30,17 @@ export const fileUploadFailure = (file, err) => ({
 export const addImageToProp = (image) => ({
     type: ActionTypes.ADD_IMAGE,
     payload: image,
-})
+});
+
+export const getData = (type) => ({
+    type: ActionTypes.GET_DATA,
+    payload: type
+});
+
+export const gotListings = (listings) => ({
+    type: ActionTypes.GOT_LISTINGS,
+    payload: listings
+});
 
 
 export const completeTask = (task) => ({

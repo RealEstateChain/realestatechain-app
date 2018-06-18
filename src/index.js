@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 // Layouts
 import App from './App'
 //import HomeContainer from './layouts/home/HomeContainer'
+import SearchContainer from './layouts/search/SearchContainer'
 import DashboardContainer from './layouts/dashboard/DashboardContainer'
-//import { LoadingContainer } from 'drizzle-react-components'
 
 import configureStore from './store'
 import drizzleOptions from './drizzleOptions'
@@ -34,6 +34,7 @@ ReactDOM.render((
           <Route path="/" component={App}>
             <IndexRoute component={DashboardContainer} />
             { /* <Route path="/home" component={HomeContainer} /> */ }
+            <Route path="/search" component={SearchContainer} />
           </Route>
         </Router>
       </Provider>
