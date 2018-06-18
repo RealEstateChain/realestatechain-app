@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, InputLabel, withStyles, Typography } from "material-ui";
+import styled from 'styled-components';
 
 import {
   ItemGrid,
@@ -14,6 +15,20 @@ import {
 
 import appStyle from "../../assets/jss/material-dashboard-react/appStyle.jsx";
 
+const Item = styled.img `
+  object-fit: cover;
+  width: 100%;
+  filter: saturate(30%);
+  box-shadow: none;
+  transition: box-shadow 200ms linear;
+  cursor: pointer;
+  border-radius: 2px;
+
+  &:hover {
+    filter: saturate(100%);
+    box-shadow: 0 0 0 2px white;
+  }
+`
 class Search extends Component {
   state = {
 
@@ -34,7 +49,7 @@ class Search extends Component {
               return (
                 <ItemGrid xs={4} sm={4} md={4}>
                   <div key={i}>
-                    <img src={require(`../../${listing.picture}`)} />
+                    <Item src={require(`../../${listing.picture}`)} />
                   </div>
                 </ItemGrid>
               );
