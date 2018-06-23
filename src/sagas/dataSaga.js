@@ -7,22 +7,19 @@ import {
   takeEvery, 
   select 
 } from 'redux-saga/effects'
+
 import { 
   ActionTypes, 
   uploadProgress, 
   uploadSuccess, 
   uploadError, 
-  uploadFinished, 
+  uploadComplete, 
   addFileToProp, 
   setLocation,
   linkRedaToProp,
 } from '../actions';
-import { 
-  requestFileUpload, 
-  uploadFile, 
-  handleError,
-  createOrUpdateREDA 
-} from '../services';
+
+import services from '../services';
 import { 
   getUserId, 
   getPropId 
@@ -40,20 +37,31 @@ export function* watchUploadFileRequest() {
       //yield call(uploadFileSaga, file);
       const userId = yield select(getUserId)
       const propId = yield select(getPropId)
-      const { location } = yield call(requestFileUpload(file, userId))
-      const success = yield call(uploadFile(file))
-        if (success) {
-          yield put(uploadSuccess(file));
-          yield put(setLocation(location))
-          const redaAddress = yield call(createOrUpdateREDA(propId, location))
-          yield put(linkRedaToProp({ redaAddress }))
-        }
+      const { location } = yield call(services.requestFileUpload, file, userId)
+
+      console.log('request ack, location: ');
+      const success = yield call(services.uploadFile, file)
+      if (success) {
+        console.log('upload success');
+        yield put(uploadSuccess(file));
+        //yield put(setLocation(location))
+        const redaAddress = yield call(services.createOrUpdateREDA, propId, location)
+        yield put(linkRedaToProp({ redaAddress }))
+      }
     } catch (e) {
+      console.log(e);
       yield put(handleError(e))
-      yield put(uploadError(e))
+      //yield put(uploadError(e))
     }
-    yield put(uploadFinished())
+    yield put(uploadComplete())
   });
+}
+
+function handleError(err, other) {
+  console.log(err);
+  if (other) {
+    console.dir(other);
+  }
 }
 
 // export function* watchUploadFile() {
