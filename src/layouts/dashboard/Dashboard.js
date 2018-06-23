@@ -29,7 +29,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { classes, propWallet, ...rest } = this.props;
+    const { classes, prop, ...rest } = this.props;
     return(
       <div className={classes.wrapper}>
 
@@ -41,7 +41,7 @@ class Dashboard extends Component {
           <div className={classes.content}>
             <Grid container>
               <ItemGrid xs={12} sm={12} md={8}>
-                <TabPanel images={propWallet.images} { ...rest } />
+                <TabPanel images={prop.images} { ...rest } />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
                 <Tasks { ...rest } />

@@ -1,4 +1,5 @@
 const initialState = {
+  id: '0x23232323232323',
   data: null,
   walletProgress: 5,
   uploadedPhotos: false,
