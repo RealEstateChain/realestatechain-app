@@ -2,6 +2,8 @@
 
 import config from '../../config/aws'
 
+import web3 from "./web3";
+
 const getData = (hash) => {
   return fetch(`${config.gateway}/aws/${hash}`)
   .then((response) => response.json())
@@ -95,4 +97,5 @@ export default {
   uploadFile: uploadFile,
   handleError: handleError,
   createOrUpdateREDA: createOrUpdateREDA,
+  web3: web3,
 }

@@ -37,7 +37,7 @@ contract REDAToken is ERC721BasicToken {
     uint id = redas.push(REDA(_uri, _meta)) - 1;
     redaToOwner[id] = msg.sender;
     ownerRedaCount[msg.sender] = ownerRedaCount[msg.sender].add(1);
-    NewReda(id, _uri, _meta);
+    emit NewReda(id, _uri, _meta);
   }
 
   function createREDA(string _uri, string _meta) public {
@@ -57,7 +57,7 @@ contract REDAToken is ERC721BasicToken {
     ownerRedaCount[_to] = ownerRedaCount[_to].add(1);
     ownerRedaCount[msg.sender] = ownerRedaCount[msg.sender].sub(1);
     redaToOwner[_tokenId] = _to;
-    Transfer(_from, _to, _tokenId);
+    emit Transfer(_from, _to, _tokenId);
   }
 
   function transfer(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
@@ -66,7 +66,7 @@ contract REDAToken is ERC721BasicToken {
 
   function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
     redaApprovals[_tokenId] = _to;
-    Approval(msg.sender, _to, _tokenId);
+    emit Approval(msg.sender, _to, _tokenId);
   }
 
   function takeOwnership(uint256 _tokenId) public {

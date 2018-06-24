@@ -11,8 +11,10 @@ import App from './App'
 import SearchContainer from './layouts/search/SearchContainer'
 import DashboardContainer from './layouts/dashboard/DashboardContainer'
 
-import configureStore from './store'
+import store from './store'
 import drizzleOptions from './drizzleOptions'
+import getWeb3 from './util/web3/getWeb3'
+import services from './services'
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
@@ -22,10 +24,17 @@ const theme = createMuiTheme({
   },
 });
 
-const store = configureStore();
 // Initialize react-router-redux.
 const history = syncHistoryWithStore(browserHistory, store)
 
+getWeb3
+.then(results => {
+  console.log('Web3 initialized!')
+  //console.dir(services.web3.getAccount())
+})
+.catch(() => {
+  console.log('Error in web3 initialization.')
+})
 
 ReactDOM.render((
     <MuiThemeProvider theme={theme}>

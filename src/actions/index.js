@@ -1,4 +1,5 @@
 export const ActionTypes = {
+    STORE_READY: 'STORE_READY',
     UPLOAD_REQUEST:  'UPLOAD_REQUEST',
     UPLOAD_START: 'UPLOAD_START',
     UPLOAD_PROGRESS: 'UPLOAD_PROGRESS',
@@ -9,7 +10,9 @@ export const ActionTypes = {
     COMPLETE_TASK: 'COMPLETE_TASK',
     GOT_LISTINGS: 'GOT_LISTINGS',
     LINK_REDA: 'LINK_REDA',
+    WEB3_INITIALIZED: 'WEB3_INITIALIZED',
 };
+
 export const requestFileUpload = (file) => ({
     type: ActionTypes.UPLOAD_REQUEST,
     payload: file,
@@ -60,6 +63,10 @@ export const gotListings = (listings) => ({
     payload: listings
 });
 
+export const web3Initialized = (web3) => ({
+    type: ActionTypes.WEB3_INITIALIZED,
+    payload: web3
+});
 
 export const completeTask = (task) => ({
     type: ActionTypes.COMPLETE_TASK, 

@@ -114,6 +114,20 @@ const fetchImages = (propId) => {
   })
 };
 
+function parseMetaData(url) {
+  const fullUrl = `${API_ENDPOINT}${encodeURI(url)}`
+  return fetch(fullUrl, {mode: 'cors'})
+    .then(data => data.json())
+    .then((json) => {
+      if (json.error) {
+        return null
+      }
+      console.log(json)
+      return json
+    })
+    .catch(console.log)
+}
+
 export function* loadImages() {
   const images = yield fetchImages();
   console.log(images)
