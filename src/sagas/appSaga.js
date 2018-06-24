@@ -22,31 +22,22 @@ import {
 // Watch for an upload request and then
 // defer to another saga to perform the actual upload
 export function* watchWeb3Initialized() {
-  yield take(ActionTypes.WEB3_INITIALIZED)
+  const action = yield take(ActionTypes.WEB3_INITIALIZED)
   try {
+    const web3Instance = action.payload.web3Instance;
     //yield call(services.web3.web3Interface.setWeb3)
-    console.log('got web3 provider')
-    const account = yield call(services.web3.getAccount)
-    console.log('got account: ')
-    console.dir(account);
-    //yield put(web3Initialized(web3Provider));
-    //yield call(uploadFileSaga, file);
-    // const userId = yield select(getUserId)
-    // const propId = yield select(getPropId)
-    // const { location } = yield call(services.requestFileUpload, file, userId)
+    console.log('got  web3 instance: ')
+    console.log(web3Instance)
+    yield call(services.web3.web3Interface.setWeb3, web3Instance)
+    console.log('set web3')
+    yield call(services.web3.getAccounts)
 
-    // console.log('request ack, location: ');
-    // const success = yield call(services.uploadFile, file)
-    // if (success) {
-    //   console.log('upload success');
-    //   yield put(uploadSuccess(file));
-    //   //yield put(setLocation(location))
-    //   const redaAddress = yield call(services.createOrUpdateREDA, propId, location)
-    //   yield put(linkRedaToProp({ redaAddress }))
-    // }
+    //yield put(web3Initialized(web3Provider));
+
   } catch (e) {
     console.log(e);
     //yield put(handleError(e))
     //yield put(uploadError(e))
   }
+  
 }

@@ -10,8 +10,8 @@ let web3 = null;
 
 const web3Interface =  {
 
-  setWeb3: () => {
-    web3 = window.Eth
+  setWeb3: (w3) => {
+    web3 = w3
   },
 
   getEth: () => {
@@ -56,11 +56,7 @@ const getAccount = () => {
 }
 
 const getAccounts = () => {
-  // return web3Interface.getEth() && web3Interface.getEth().defaultAccount
-  web3Interface.getEth() && web3Interface.getEth().getAccounts().then(function(accounts) {
-    debugger;
-      console.dir(accounts);
-    })
+  web3.eth.getAccounts().then(console.log);
 }
 
 export default {
