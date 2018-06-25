@@ -6,7 +6,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house1.jpeg",
 	    "age": 3,
 	    "locality": "Lisco",
-	    "location": "Alabama"
+			"location": "Alabama",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 1,
@@ -14,7 +17,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house1.jpeg",
 	    "age": 3,
 	    "locality": "Tooleville",
-	    "location": "West Virginia"
+			"location": "West Virginia",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 2,
@@ -22,7 +28,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house2.jpeg",
 	    "age": 2,
 	    "locality": "Freeburn",
-	    "location": "Idaho"
+			"location": "Idaho",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 3,
@@ -30,7 +39,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house3.jpeg",
 	    "age": 2,
 	    "locality": "Camas",
-	    "location": "Pennsylvania"
+			"location": "Pennsylvania",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 4,
@@ -38,7 +50,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house2.jpeg",
 	    "age": 2,
 	    "locality": "Gerber",
-	    "location": "South Dakota"
+			"location": "South Dakota",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 5,
@@ -46,7 +61,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house2.jpeg",
 	    "age": 3,
 	    "locality": "Innsbrook",
-	    "location": "Illinois"
+			"location": "Illinois",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 6,
@@ -54,7 +72,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house4.jpeg",
 	    "age": 3,
 	    "locality": "Soudan",
-	    "location": "Louisiana"
+			"location": "Louisiana",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 7,
@@ -62,7 +83,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house4.jpeg",
 	    "age": 3,
 	    "locality": "Jacksonwald",
-	    "location": "Palau"
+			"location": "Palau",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 8,
@@ -70,7 +94,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house2.jpeg",
 	    "age": 2,
 	    "locality": "Honolulu",
-	    "location": "Hawaii"
+			"location": "Hawaii",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 9,
@@ -78,7 +105,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house3.jpeg",
 	    "age": 3,
 	    "locality": "Mathen",
-	    "location": "Utah"
+			"location": "Utah",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 10,
@@ -86,7 +116,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house3.jpeg",
 	    "age": 2,
 	    "locality": "Tyhee",
-	    "location": "Indiana"
+			"location": "Indiana",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  },
 	  {
 	    "id": 11,
@@ -94,7 +127,10 @@ const listingsInitialState = {
 	    "picture": "assets/img/properties/house1.jpeg",
 	    "age": 3,
 	    "locality": "Windsor",
-	    "location": "Montana"
+			"location": "Montana",
+			"descriptionShort": "3BR 2BA, 1650sqft.",
+      "price": 350000,
+      "source": "New Construction",
 	  }
 	]
 };
