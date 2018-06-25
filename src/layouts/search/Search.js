@@ -17,19 +17,21 @@ import appStyle from "../../assets/jss/material-dashboard-react/appStyle.jsx";
 
 const Item = styled.img `
   object-fit: cover;
+  height: 100%;
+  width: 100%;
   transition: box-shadow 200ms linear;
   cursor: pointer;
-  height: 100%;
 `
 
 const ItemContainer = styled.a `
   display: block;
   position: relative;
-  height: 300px;
+  height: 15rem;
   overflow: hidden;
   box-shadow: none;
   border-radius: 2px;
   color: white;
+  width: 100%;
 
   & > img {
     filter: saturate(30%);
@@ -124,9 +126,9 @@ class Search extends Component {
                     <Age>{listing.age} days on Real Estate Chain</Age>
                     <ItemText>
                       <Name href="#">{listing.name}</Name> <br />
-                      <Description>{listing.descriptionShort}, {listing.source}></Description> <br />
+                      <Description>{listing.descriptionShort}, {listing.source}</Description> <br />
                       <Location><b>{listing.locality}, {listing.location}</b></Location> <br />
-                      <Price>${numberWithCommas(listing.price)}</Price> 
+                      <Price>USD${numberWithCommas(listing.price)}</Price> 
                     </ItemText>
                   </ItemContainer>
                 </ItemGrid>
