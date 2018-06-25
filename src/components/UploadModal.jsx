@@ -78,7 +78,10 @@ class UploadModal extends React.Component {
   }
 
   handleFileSelected = (event, file) => {
-    this.setState({file: file, fileContents: event.target.result});
+    const fileName = file.name;
+    const fileType = file.type;
+    //this.setState({file: file, fileContents: event.target.result});
+    this.props.handleFileUpload(file);
   }
 
   onLoad = (file) => {
@@ -102,7 +105,7 @@ class UploadModal extends React.Component {
               multiple
              
               onLoadStart={ this.showProgressBar }
-              onLoad={ handleFileUpload }
+              onLoad={ this.handleFileSelected }
               onProgress={ this.updateProgressBar }
              
               abortIf={ this.cancelButtonClicked }

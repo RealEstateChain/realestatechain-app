@@ -4,6 +4,8 @@ import config from '../../config/aws'
 
 import web3 from "./web3";
 
+const recStorageApi = `https://gm78iajulb.execute-api.us-east-1.amazonaws.com/prototype`
+
 const getData = (hash) => {
   return fetch(`${config.gateway}/aws/${hash}`)
   .then((response) => response.json())
@@ -34,24 +36,25 @@ const addData = (data) => {
   })
 }
 
-const requestFileUpload = (data, userId) => {
+const requestFileUpload = (file, userId) => {
   console.log("requesting to upload for user " + userId);
-  console.dir(data);
-  return { 
-    location: 'http://'
-  };
-  const request = {
-    ...data
+  console.dir(file.name);
+
+  const requestBody = {
+    key: file.name,
+    contentType:  file.type
   };
 
-  return fetch(`${config.api}/api/v0/add`, {
+  
+  return fetch(`${recStorageApi}`, {
     method: 'POST',
-    body: data,
+    mode: 'no-cors',
+    body: JSON.stringify(requestBody),
   })
   .then((response) => response.json())
   .then((responseJson) => {
     console.log(responseJson)
-    return responseJson.uri
+    return responseJson
   })
   .catch((error) => {
     console.error(error)
@@ -65,7 +68,7 @@ const uploadFile = (file, uri) => {
   const formData  = new FormData()
   formData.append('blob', new Blob([JSON.stringify(file)]), 'file')
 
-  return fetch(`${config.api}/api/v0/add`, {
+  return fetch(`${recStorageApi}`, {
     method: 'POST',
     body: formData,
   })

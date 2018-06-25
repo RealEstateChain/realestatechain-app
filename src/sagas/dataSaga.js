@@ -37,10 +37,10 @@ export function* watchUploadFileRequest() {
       //yield call(uploadFileSaga, file);
       const userId = yield select(getUserId)
       const propId = yield select(getPropId)
-      const { location } = yield call(services.requestFileUpload, file, userId)
+      const location = yield call(services.requestFileUpload, file, userId)
 
-      console.log('request ack, location: ');
-      const success = yield call(services.uploadFile, file)
+      console.log('request ack, location: ' + location);
+      const success = yield call(services.uploadFile, file, location)
       if (success) {
         console.log('upload success');
         yield put(uploadSuccess(file));
