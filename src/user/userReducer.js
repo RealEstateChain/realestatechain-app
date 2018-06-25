@@ -1,4 +1,6 @@
 const initialState = {
+  id: '0x23232323232323',
+  account: null,
   data: null,
   walletProgress: 5,
   uploadedPhotos: false,
@@ -33,6 +35,14 @@ const userReducer = (state = initialState, action) => {
   {
     return Object.assign({}, state, {
       [action.payload]: true
+    })
+  }
+
+  if (action.type === 'SET_ACCOUNT')
+  {
+    return Object.assign({}, state, {
+      account: action.payload,
+      id: action.payload,
     })
   }
 

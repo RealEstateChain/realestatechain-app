@@ -1,6 +1,7 @@
 import store from '../../store'
 import Web3 from 'web3'
 
+
 export const WEB3_INITIALIZED = 'WEB3_INITIALIZED'
 function web3Initialized(results) {
   return {
@@ -11,9 +12,9 @@ function web3Initialized(results) {
 
 let getWeb3 = new Promise(function(resolve, reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
-  window.addEventListener('load', function(dispatch) {
+  window.addEventListener('DOMContentLoaded', function(dispatch) {
     var results
-    var web3
+    var web3 = window.web3
 
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {

@@ -5,7 +5,7 @@ import { withStyles } from "material-ui";
 import {
 	requestFileUpload,
 	completeTask,
-	addImageToProp,
+	addFileToProp,
 	
 	sendTokens,
 	startLogin,
@@ -26,9 +26,9 @@ class DashboardContainer extends React.Component {
 // May still need this even with data function to refresh component on updates for this contract.
 const mapStateToProps = state => {
   return {
-    accounts: state.accounts,
+    accounts: state.web3.accounts,
     user: state.user,
-    propWallet: state.propWallet,
+    prop: state.prop,
   }
 }
 
@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => {
   return {
   	completeTask: (task) => { dispatch(completeTask(task)) },
   	handleFileUpload: (file) => { dispatch(requestFileUpload(file)) },
-  	addImageToProp: (image) => { dispatch(addImageToProp(image)) },
+  	addFileToProp: (file) => { dispatch(addFileToProp(file)) },
     // coming later:
     send: () => dispatch(sendTokens()),
     startLogin: () => dispatch(startLogin()),

@@ -28,7 +28,7 @@ function Header({ ...props }) {
     });
     return name;
   }
-  const { classes, color } = props;
+  const { classes, color, accounts } = props;
   const appBarClasses = cx({
     [" " + classes[color]]: color
   });
@@ -43,6 +43,9 @@ function Header({ ...props }) {
         </div>
         <Hidden smDown implementation="css" className={classes.headerRight}>
           <div className={classes.accountInfo}>
+          { accounts && accounts[0] &&
+            <span className={classes.rezTokenLabel}>{accounts[0]}</span>
+          }
             <span className={classes.rezTokenLabel}>2000 REZ</span>
           </div>
           <HeaderLinks />
@@ -65,7 +68,7 @@ function Header({ ...props }) {
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   color: PropTypes.oneOf(["primary", "info", "success", "warning", "grey"]),
-  accounts: PropTypes.object,
+  accounts: PropTypes.array,
 };
 
 export default withStyles(headerStyle)(Header);

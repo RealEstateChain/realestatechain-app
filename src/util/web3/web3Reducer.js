@@ -1,5 +1,6 @@
 const initialState = {
-  web3Instance: null
+  web3Instance: null,
+  accounts: []
 }
 
 const web3Reducer = (state = initialState, action) => {
@@ -7,6 +8,13 @@ const web3Reducer = (state = initialState, action) => {
   {
     return Object.assign({}, state, {
       web3Instance: action.payload.web3Instance
+    })
+  }
+
+  if (action.type === 'SET_ACCOUNTS')
+  {
+    return Object.assign({}, state, {
+      accounts: action.payload
     })
   }
 

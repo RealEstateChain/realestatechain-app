@@ -1,5 +1,5 @@
 import Home from './Home'
-import { drizzleConnect } from 'drizzle-react'
+import { connect } from 'react-redux'
 
 // May still need this even with data function to refresh component on updates for this contract.
 const mapStateToProps = state => {
@@ -7,10 +7,9 @@ const mapStateToProps = state => {
     accounts: state.accounts,
     user: state.user,
     SimpleStorage: state.contracts.SimpleStorage,
-    drizzleStatus: state.drizzleStatus
   }
 }
 
-const HomeContainer = drizzleConnect(Home, mapStateToProps);
+const HomeContainer = connect(Home, mapStateToProps);
 
 export default HomeContainer
