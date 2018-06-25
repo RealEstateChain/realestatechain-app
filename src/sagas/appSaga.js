@@ -30,8 +30,11 @@ export function* watchWeb3Initialized() {
     console.log(web3Instance)
     yield call(services.web3.web3Interface.setWeb3, web3Instance)
     console.log('set web3')
-    yield call(services.web3.getAccounts)
-
+    const accounts = yield call(services.web3.fetchAccounts)
+    console.log('got accounts')
+    yield put({type: ActionTypes.SET_ACCOUNTS, payload: accounts});
+    // const acct = yield call(services.web3.getAccount)
+    // console.log(acct)
     //yield put(web3Initialized(web3Provider));
 
   } catch (e) {

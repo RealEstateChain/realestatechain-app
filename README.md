@@ -81,10 +81,7 @@ Download [Metamask](https://metamask.io) for Chrome, Firefox or Brave.
 
 If you have trouble connecting truffle to ganache, or the frontend/Metamask to ganache, make sure your ganache host/port and Metamask host/port are the same
 
-## FAQ
-
-* __Why am I getting errors about drizzle when I start the app__*
-    Make sure the versions of drizzle and all of it's related packages are at least 1.1.0, and if not then install that version directly.
+## FAQ 
 
 * __I'm unable to migrate contracts on my local ganache server__*
     You have to unlock the account you use to upload smart contracts. Pick an address out of the list of accounts Ganache started with. Then add the account to your truffle.js file:

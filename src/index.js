@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-//import { DrizzleProvider } from 'drizzle-react'
+
 import { Provider } from 'react-redux';
 
 // Layouts
@@ -12,7 +12,6 @@ import SearchContainer from './layouts/search/SearchContainer'
 import DashboardContainer from './layouts/dashboard/DashboardContainer'
 
 import store from './store'
-import drizzleOptions from './drizzleOptions'
 import getWeb3 from './util/web3/getWeb3'
 import services from './services'
 

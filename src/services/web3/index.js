@@ -2,6 +2,8 @@
 import store from '../../store'
 import redaAbi from './redaAbi'
 import rezAbi from './rezAbi'
+import isEmpty from 'lodash/isEmpty';
+
 
 
 const DEFAULT_GAS_PRICE = '2000000000'
@@ -47,12 +49,54 @@ const web3Interface =  {
   },
 }
 
+const fetchNetwork = () => {
+  return new Promise((resolve, reject) => {
+    const { web3 } = window;
+
+    web3 && web3.version && web3.version.getNetwork((err, netId) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(netId);
+      }
+    });
+  });
+};
+
+const fetchAccounts = () => {
+  return new Promise((resolve, reject) => {
+    const { web3 } = window;
+    const ethAccounts = getAccounts();
+
+    if (isEmpty(ethAccounts)) {
+      web3 && web3.eth && web3.eth.getAccounts((err, accounts) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(accounts);
+        }
+      });
+    } else {
+      resolve(ethAccounts);
+    }
+  });
+};
+
+function getAccounts() {
+  try {
+    const { web3 } = window;
+    // throws if no account selected
+    return web3.eth.accounts;
+  } catch (e) {
+    return [];
+  }
+}
+
 const getAccount = () => {
   // return web3Interface.getEth() && web3Interface.getEth().defaultAccount
-  web3Interface.getEth() && 
-    web3Interface.getEth().getAccounts().then((accounts) => {
-      return accounts[0]
-    });
+  web3.eth.getAccounts().then(function(acct) {
+    return acct
+  });
 }
 
 const getAccounts = () => {
@@ -60,6 +104,8 @@ const getAccounts = () => {
 }
 
 export default {
+  fetchAccounts,
+  fetchNetwork,
   // getBalances,
   // sendTransactionToREDA,
   // sendTransactionToREZ,

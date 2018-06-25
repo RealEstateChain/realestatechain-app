@@ -11,6 +11,7 @@ export const ActionTypes = {
     GOT_LISTINGS: 'GOT_LISTINGS',
     LINK_REDA: 'LINK_REDA',
     WEB3_INITIALIZED: 'WEB3_INITIALIZED',
+    SET_ACCOUNTS: 'SET_ACCOUNTS',
 };
 
 export const requestFileUpload = (file) => ({
