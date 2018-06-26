@@ -4,7 +4,7 @@ import config from '../../config/aws'
 
 import web3 from "./web3";
 
-const recStorageApi = `https://gm78iajulb.execute-api.us-east-1.amazonaws.com/prototype`
+const recStorageApi = `https://dr8k381y1h.execute-api.us-east-1.amazonaws.com/dev/upload/secure-uri?`
 
 const getData = (hash) => {
   return fetch(`${config.gateway}/aws/${hash}`)
@@ -40,20 +40,19 @@ const requestFileUpload = (file, userId) => {
   console.log("requesting to upload for user " + userId);
   console.dir(file.name);
 
-  const requestBody = {
-    key: file.name,
-    contentType:  file.type
-  };
-
+  const requestParams = `key=${file.name}&ext=${file.type}`
   
-  return fetch(`${recStorageApi}`, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify(requestBody),
+  fetch(`${recStorageApi}${requestParams}`, {
+    method: 'GET',
   })
-  .then((response) => response.json())
+  .then((response) => {
+    if (response.ok) {
+      return response.json()
+    }
+  })
   .then((responseJson) => {
     console.log(responseJson)
+    const { uri } = responseJson
     return responseJson
   })
   .catch((error) => {
