@@ -40,20 +40,16 @@ const requestFileUpload = (file, userId) => {
   console.log("requesting to upload for user " + userId);
   console.dir(file.name);
 
-  const requestParams = `key=${file.name}&ext=${file.type}`
+  const requestParams = `key=${file.name}&ext=${file.type}&x-fuck-cors=1`
   
   fetch(`${recStorageApi}${requestParams}`, {
-    method: 'GET',
+
   })
-  .then((response) => {
-    if (response.ok) {
-      return response.json()
-    }
-  })
+  .then((response) => response.json())
   .then((responseJson) => {
     console.log(responseJson)
     const { uri } = responseJson
-    return responseJson
+    return uri
   })
   .catch((error) => {
     console.error(error)

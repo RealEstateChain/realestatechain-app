@@ -203,6 +203,29 @@ export default [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [],
 		"name": "symbol",
@@ -232,6 +255,25 @@ export default [
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"name": "getRedasByOwner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -312,6 +354,42 @@ export default [
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_redaId",
+				"type": "uint256"
+			},
+			{
+				"name": "_newMeta",
+				"type": "string"
+			}
+		],
+		"name": "changeMeta",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_redaId",
+				"type": "uint256"
+			},
+			{
+				"name": "_newUri",
+				"type": "string"
+			}
+		],
+		"name": "changeUri",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -332,6 +410,20 @@ export default [
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -356,28 +448,6 @@ export default [
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "redaId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "uri",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "meta",
-				"type": "string"
-			}
-		],
-		"name": "NewReda",
-		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -443,6 +513,57 @@ export default [
 			}
 		],
 		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "redaId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "uri",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "meta",
+				"type": "string"
+			}
+		],
+		"name": "NewReda",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
 		"type": "event"
 	}
 ]
