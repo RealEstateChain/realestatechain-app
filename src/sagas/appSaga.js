@@ -13,8 +13,7 @@ import {
 
 import services from '../services';
 import { 
-  getUserId, 
-  getPropId 
+  getUserAccount, 
 } from '../reducers/selectors';
 
 //import { createUploadFileChannel } from './createUploadFileChannel';
@@ -24,7 +23,7 @@ import {
 export function* watchWeb3Initialized() {
   const action = yield take(ActionTypes.WEB3_INITIALIZED)
   try {
-    const web3Instance = action.payload.web3Instance;
+    const web3Instance = action.payload.web3Instance
     //yield call(services.web3.web3Interface.setWeb3)
     console.log('got  web3 instance: ')
     console.log(web3Instance)
@@ -32,10 +31,28 @@ export function* watchWeb3Initialized() {
     console.log('set web3')
     const accounts = yield call(services.web3.fetchAccounts)
     console.log('got accounts')
-    yield put({type: ActionTypes.SET_ACCOUNTS, payload: accounts});
+    yield put({type: ActionTypes.SET_ACCOUNTS, payload: accounts})
     // const acct = yield call(services.web3.getAccount)
     // console.log(acct)
     //yield put(web3Initialized(web3Provider));
+
+  } catch (e) {
+    console.log(e);
+    //yield put(handleError(e))
+    //yield put(uploadError(e))
+  }
+  
+}
+
+export function* watchCreateREDA() {
+  const action = yield take(ActionTypes.CREATE_REDA)
+  try {
+    const propWallet = action.payload
+    const creator = select(getUserAccount)
+    const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
+    console.log('created reda')
+    console.dir(newReda)
+    
 
   } catch (e) {
     console.log(e);

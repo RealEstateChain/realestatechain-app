@@ -6,7 +6,8 @@ import {
 	requestFileUpload,
 	completeTask,
 	addFileToProp,
-	
+	createREDA,
+  
 	sendTokens,
 	startLogin,
 	createNewToken,
@@ -37,6 +38,7 @@ const mapDispatchToProps = dispatch => {
   	completeTask: (task) => { dispatch(completeTask(task)) },
   	handleFileUpload: (file) => { dispatch(requestFileUpload(file)) },
   	addFileToProp: (file) => { dispatch(addFileToProp(file)) },
+    createREDA: (data) => { dispatch(createREDA(data))},
     // coming later:
     send: () => dispatch(sendTokens()),
     startLogin: () => dispatch(startLogin()),

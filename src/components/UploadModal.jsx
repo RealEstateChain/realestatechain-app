@@ -113,7 +113,9 @@ class UploadModal extends React.Component {
               onCancel={ this.showInvalidFileTypeMessage }
               onAbort={ this.resetCancelButtonClicked }
              />
-              <Button onClick={()=> {}}>Save Image</Button>
+              <Button onClick={()=> {
+                this.props.createREDA({uri:'http://ipfs', meta: 'test' })
+              }}>Save Image</Button>
           </div>
         </Modal>
       </div>

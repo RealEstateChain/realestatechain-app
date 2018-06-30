@@ -1,12 +1,18 @@
 //import config from '../../config'
 import store from '../../store'
 import redaAbi from './redaAbi'
+import redaFactoryAbi from './redaFactoryAbi'
 import rezAbi from './rezAbi'
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from 'lodash/isEmpty'
 
 
 
 const DEFAULT_GAS_PRICE = '2000000000'
+
+/* these addresses are dependent on the executing environment, replace on every migrate */
+const REZTokenContractAddress = '0x3d49d1ef2ade060a33c6e6aa213513a7ee9a6241'
+const REDAFactoryContractAddress = '0x2a504b5e7ec284aca5b6f49716611237239f0b97'
+const REDATokenContractAddress = '0xbd2c938b9f6bfc1a66368d08cb44dc3eb2ae27be'
 
 let web3 = null;
 
@@ -32,20 +38,15 @@ const web3Interface =  {
   },
 
   getRedaFactory: () => {
-    return web3Interface.getNetworkId()
-    .then((networkId) => {
-      return web3.eth.contract(redaAbi).at(
-        networkId === '4' ? '0x4597c2b6b11a244179f45acf565c66deb3cd99a1' : '0x5AECaF7d9712851dd5Db865c4242F54D9366b3e1',
-      )
-    })
+    return new web3.eth.Contract(redaFactoryAbi, REDAFactoryContractAddress)
   },
 
-  getReda: (address) => {
-    return web3.eth.contract(redaAbi).at(address)
+  getREDA: (address) => {
+    return web3.eth.contract(redaAbi).at(REDATokenContractAddress)
   },
 
-  getRez: (address) => {
-    return web3.eth.contract(rezAbi).at(address)
+  getREZ: (address) => {
+    return web3.eth.contract(rezAbi).at(REZTokenContractAddress)
   },
 }
 
@@ -82,16 +83,6 @@ const fetchAccounts = () => {
   });
 };
 
-function getAccounts() {
-  try {
-    const { web3 } = window;
-    // throws if no account selected
-    return web3.eth.accounts;
-  } catch (e) {
-    return [];
-  }
-}
-
 const getAccount = () => {
   // return web3Interface.getEth() && web3Interface.getEth().defaultAccount
   web3.eth.getAccounts().then(function(acct) {
@@ -101,6 +92,53 @@ const getAccount = () => {
 
 const getAccounts = () => {
   web3.eth.getAccounts().then(console.log);
+}
+
+const findTokenContractAddress = (logs) => {
+  debugger;
+
+  // const decodedLogs = abiDecoder.decodeLogs(logs)
+  // const filtered = _.filter(decodedLogs, (log) => {
+  //   return log && log.name === 'Transfer'
+  // })
+  return logs[0].address;
+  
+}
+
+const createNewREDA = (token, creator) => { /* returns Promise */
+  const tokenFactory = web3Interface.getRedaFactory()
+  //.then((tokenFactory) => {
+  console.log(tokenFactory)
+  return new Promise((resolve, reject) => {
+    tokenFactory.methods
+    .createREDA(token.uri, token.meta)
+    .call({ from: creator.address, gasPrice: DEFAULT_GAS_PRICE }).then(
+      function (err, txHash) {
+        if (err) {
+          reject(err)
+        } else {
+          if (txHash) {
+            console.log('Transaction created')
+            console.log(txHash)
+            const interval = setInterval(() => {
+              web3Interface.getEth().getTransactionReceipt(txHash, (error, response) => {
+                if (error) {
+                  reject(error)
+                }
+                if (response) {
+                  clearInterval(interval)
+                  resolve({
+                    ...token,
+                    address: findTokenContractAddress(response.logs),
+                    type: 'REDA',
+                  })
+                }
+              })
+            }, 10000)
+          }
+        }
+      })
+    })
 }
 
 export default {
@@ -114,6 +152,6 @@ export default {
   getAccount,
   getAccounts,
   // getRedaInfo,
-  // createNewREDA,
+  createNewREDA,
   // updateREDA
 }

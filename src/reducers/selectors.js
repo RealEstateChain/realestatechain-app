@@ -7,3 +7,5 @@ export const getPropId = (state) => state.prop.id
 export const getCachedFile = (state, uri) => {
   return state.cache[uri]
 }
+
+export const getUserAccount = (state) => state.web3.accounts[0]

@@ -88,7 +88,11 @@ class TaskList extends React.Component {
               </List>
             </div>
             
-            <UploadModal handleClose={this.handleModalClose} isOpen={this.state.modalIsOpen} handleFileUpload={handleFileUpload} />
+            <UploadModal 
+              handleClose={this.handleModalClose} 
+              isOpen={this.state.modalIsOpen} 
+              handleFileUpload={handleFileUpload}
+              createREDA={this.props.createREDA} />
           </Grid>
         </Grid>
       </div>

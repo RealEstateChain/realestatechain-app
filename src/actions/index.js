@@ -12,6 +12,7 @@ export const ActionTypes = {
     LINK_REDA: 'LINK_REDA',
     WEB3_INITIALIZED: 'WEB3_INITIALIZED',
     SET_ACCOUNTS: 'SET_ACCOUNTS',
+    CREATE_REDA: 'CREATE_REDA',
 };
 
 export const requestFileUpload = (file) => ({
@@ -72,4 +73,9 @@ export const web3Initialized = (web3) => ({
 export const completeTask = (task) => ({
     type: ActionTypes.COMPLETE_TASK, 
     payload: task,
+});
+
+export const createREDA = (propWallet) => ({
+    type: ActionTypes.CREATE_REDA, 
+    payload: propWallet,
 });
