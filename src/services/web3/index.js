@@ -112,7 +112,7 @@ const createNewREDA = (token, creator) => { /* returns Promise */
   return new Promise((resolve, reject) => {
     tokenFactory.methods
     .createREDA(token.uri, token.meta)
-    .call({ from: creator.address, gasPrice: DEFAULT_GAS_PRICE }).then(
+    .send({ from: creator, gasPrice: DEFAULT_GAS_PRICE }).then(
       function (err, txHash) {
         if (err) {
           reject(err)

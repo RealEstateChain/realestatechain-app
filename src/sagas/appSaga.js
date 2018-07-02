@@ -30,7 +30,8 @@ export function* watchWeb3Initialized() {
     yield call(services.web3.web3Interface.setWeb3, web3Instance)
     console.log('set web3')
     const accounts = yield call(services.web3.fetchAccounts)
-    console.log('got accounts')
+    console.log('got accounts: ')
+    console.dir(accounts)
     yield put({type: ActionTypes.SET_ACCOUNTS, payload: accounts})
     // const acct = yield call(services.web3.getAccount)
     // console.log(acct)
@@ -48,7 +49,7 @@ export function* watchCreateREDA() {
   const action = yield take(ActionTypes.CREATE_REDA)
   try {
     const propWallet = action.payload
-    const creator = select(getUserAccount)
+    const creator = yield select(getUserAccount)
     const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
     console.log('created reda')
     console.dir(newReda)
