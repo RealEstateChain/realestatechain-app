@@ -107,38 +107,44 @@ const findTokenContractAddress = (logs) => {
 
 const createNewREDA = (token, creator) => { /* returns Promise */
   const tokenFactory = web3Interface.getRedaFactory()
-  //.then((tokenFactory) => {
   console.log(tokenFactory)
   return new Promise((resolve, reject) => {
     tokenFactory.methods
     .createREDA(token.uri, token.meta)
-    .send({ from: creator, gasPrice: DEFAULT_GAS_PRICE }).then(
-      function (err, txHash) {
-        if (err) {
-          reject(err)
-        } else {
-          if (txHash) {
-            console.log('Transaction created')
-            console.log(txHash)
-            const interval = setInterval(() => {
-              web3Interface.getEth().getTransactionReceipt(txHash, (error, response) => {
-                if (error) {
-                  reject(error)
-                }
-                if (response) {
-                  clearInterval(interval)
-                  resolve({
-                    ...token,
-                    address: findTokenContractAddress(response.logs),
-                    type: 'REDA',
-                  })
-                }
-              })
-            }, 10000)
-          }
-        }
-      })
+    .send({ from: creator, gasPrice: DEFAULT_GAS_PRICE })
+    .on("receipt", (receipt) => {
+      console.log('REDA created')
+      console.log(receipt)
+      getRedasByOwner(creator)
+      .then((redas) => {
+        console.log(redas)
+      });
     })
+    .on("error", (error) => {
+      console.error(error)
+    });
+  })
+}
+
+const getRedaDetails = (id) => {
+  return web3Interface.getRedaFctory().methods.redas(id).call()
+  .then((reda) => {
+    return reda
+  });
+}
+
+const redaToOwner = (id) => {
+  return web3Interface.getRedaFctory().methods.redaToOwner(id).call()
+  .then((owner) => {
+    return owner
+  });
+}
+
+const getRedasByOwner = (owner) => {
+  return web3Interface.getRedaFctory().methods.getRedasByOwner(owner).call()
+  .then((redas) => {
+    return redas
+  });
 }
 
 export default {
@@ -153,5 +159,8 @@ export default {
   getAccounts,
   // getRedaInfo,
   createNewREDA,
+  getRedaDetails,
+  redaToOwner,
+  getRedasByOwner,
   // updateREDA
 }

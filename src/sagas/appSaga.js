@@ -53,7 +53,9 @@ export function* watchCreateREDA() {
     const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
     console.log('created reda')
     console.dir(newReda)
-    
+    const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
+    console.log('new reda details:')
+    console.dir(newRedaDetails)
 
   } catch (e) {
     console.log(e);
