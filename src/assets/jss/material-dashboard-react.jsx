@@ -20,7 +20,7 @@
 
 const drawerWidth = 60;
 
-const darkModeColor = "#2C2F33";
+const darkModeColor = "#1d292d";
 const greyColor = "#99AAB5";
 
 const transition = {
