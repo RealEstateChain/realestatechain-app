@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DoneIcon from '@material-ui/icons/Done';
 
-import { TaskItem, UploadModal } from '../components';
+import { TaskItem, UploadModal, TextInputModal } from '../components';
 
 
 const styles = theme => ({
@@ -38,22 +38,32 @@ const styles = theme => ({
 class TaskList extends React.Component {
   state = {
     secondary: true,
-    modalIsOpen: false,
+    uploadModalIsOpen: false,
+    dataModalIsOpen: false,
   };
 
   handleTask = task => () => {
     if (task.indexOf('upload') > -1) {
-      this.setState({ modalIsOpen: true });
+      this.setState({ uploadModalIsOpen: true });
+    }
+    else if (task.indexOf('data') > -1) {
+      this.setState({ dataModalIsOpen: true });
     }
   }
 
-  handleModalClose = () => {
-    this.setState({ modalIsOpen: false });
+  handleModalClose = (modalType) => {
+    switch(modalType) {
+      case 'upload': this.setState({ uploadModalIsOpen: false });
+        break;
+      case 'data': this.setState({ dataModalIsOpen: false });
+        break;
+    }
+    
   }
 
   render() {
-    const { classes, user, handleFileUpload } = this.props;
-    const { secondary, modalIsOpen } = this.state;
+    const { classes, user, handleFileUpload, handleFieldChange } = this.props;
+    const { secondary, uploadModalIsOpen, dataModalIsOpen } = this.state;
 
     return (
       <div className={classes.root}>
@@ -67,32 +77,38 @@ class TaskList extends React.Component {
               <List>
                   <TaskItem 
                     primary="Upload Photos"
-                    secondary={this.state.secondary ? 'Show off your user, all image types accepted' : null}
+                    secondary={this.state.secondary ? 'Show off your property, all image types accepted' : null}
                     done={user ? user.uploadedPhotos : false}
-                    action={() => this.setState({ modalIsOpen: true }) } />
+                    action={() => this.setState({ uploadModalIsOpen: true }) } />
                   <TaskItem 
                     primary="Upload Floorplan"
-                    secondary={this.state.secondary ? 'Show off the layout of your user' : null}
+                    secondary={this.state.secondary ? 'Layout of your property' : null}
                     done={user ? user.uploadedFloorplan : false}
                     action={() => this.props.completeTask('uploadedFloorplan')} />
                   <TaskItem 
-                    primary="Upload Property Data"
-                    secondary={this.state.secondary ? 'What makes your user valuable?' : null}
+                    primary="Enter Property Data"
+                    secondary={this.state.secondary ? 'What makes your property valuable?' : null}
                     done={user ? user.uploadedPropData : false}
-                    action={() => this.props.completeTask('uploadedPropData')} />
+                    action={() => this.setState({ dataModalIsOpen: true }) } />
                   <TaskItem 
                     primary="Get Verified"
-                    secondary={this.state.secondary ? 'Prove that you are the owner or guardian of this user' : null}
+                    secondary={this.state.secondary ? 'Prove that you are the owner or guardian of this property' : null}
                     done={user ? user.verified : false}
                     action={() => this.props.completeTask('verified')} />
               </List>
             </div>
             
             <UploadModal 
-              handleClose={this.handleModalClose} 
-              isOpen={this.state.modalIsOpen} 
+              handleClose={() => this.handleModalClose('upload')} 
+              isOpen={this.state.uploadModalIsOpen} 
               handleFileUpload={handleFileUpload}
               createREDA={this.props.createREDA} />
+
+              <TextInputModal 
+              handleClose={() => this.handleModalClose('data')} 
+              isOpen={this.state.dataModalIsOpen} 
+              handleFileUpload={handleFieldChange}
+              updateREDA={this.props.updateReda} />
           </Grid>
         </Grid>
       </div>
