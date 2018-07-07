@@ -85,7 +85,7 @@ class TextFields extends React.Component {
           label="Address"
           multiline
           rowsMax="4"
-          value={this.state.address}
+          value={fields.address}
           onChange={(event) => { 
             this.handleChange('address')
             setPropAddress(event.target.value)
@@ -98,7 +98,7 @@ class TextFields extends React.Component {
           label="Extra (JSON)"
           multiline
           rowsMax="99"
-          value={this.state.extra}
+          value={fields.extra}
           onChange={(event) => { 
             this.handleChange('extra')
             setPropExtra(event.target.value)
@@ -109,7 +109,7 @@ class TextFields extends React.Component {
         <TextField
           id="price"
           label="Price"
-          value={this.state.price}
+          value={fields.price}
           onChange={(event) => { 
             this.handleChange('price')
             setPropPrice(event.target.value)
