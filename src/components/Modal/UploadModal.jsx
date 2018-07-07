@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FileInput from 'react-simple-file-input';
 
 import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
+import { Button } from 'material-ui';
 
 import { withStyles } from '@material-ui/core/styles';
 

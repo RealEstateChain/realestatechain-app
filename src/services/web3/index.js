@@ -105,14 +105,15 @@ const findTokenContractAddress = (logs) => {
   
 }
 
-const createNewREDA = (token, creator) => { /* returns Promise */
+const createNewREDA = (propWallet, creator) => { /* returns Promise */
   const tokenFactory = web3Interface.getRedaFactory()
   console.log(tokenFactory)
   return new Promise((resolve, reject) => {
     tokenFactory.methods
-    .createREDA(token.uri, token.meta)
+    .createREDA(propWallet.uri, propWallet.meta)
     .send({ from: creator, gasPrice: DEFAULT_GAS_PRICE })
     .on("receipt", (receipt) => {
+      debugger;
       console.log('REDA created')
       console.log(receipt)
       getRedasByOwner(creator)
@@ -121,6 +122,7 @@ const createNewREDA = (token, creator) => { /* returns Promise */
       });
     })
     .on("error", (error) => {
+      debugger;
       console.error(error)
     });
   })

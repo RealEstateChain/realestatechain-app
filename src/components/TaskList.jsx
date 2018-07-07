@@ -18,6 +18,8 @@ import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DoneIcon from '@material-ui/icons/Done';
 
+import { Button } from 'material-ui';
+
 import { TaskItem, UploadModal, PropDataModal } from '../components';
 
 
@@ -95,6 +97,9 @@ class TaskList extends React.Component {
                     secondary={this.state.secondary ? 'Prove that you are the owner or guardian of this property' : null}
                     done={user ? user.verified : false}
                     action={() => this.props.completeTask('verified')} />
+                  <Button onClick={()=> {
+                    this.props.createREDA(prop)
+                  }}>Save Prop Wallet</Button>
               </List>
             </div>
             

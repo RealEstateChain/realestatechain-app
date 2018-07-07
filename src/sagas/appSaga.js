@@ -48,7 +48,8 @@ export function* watchWeb3Initialized() {
 export function* watchCreateREDA() {
   const action = yield take(ActionTypes.CREATE_REDA)
   try {
-    const propWallet = action.payload
+    const meta = JSON.stringify(action.payload)
+    const propWallet = { uri: `http://uri1`, meta: meta }
     const creator = yield select(getUserAccount)
     const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
     console.log('created reda')
