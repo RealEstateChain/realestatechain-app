@@ -14,7 +14,7 @@ import {
   uploadSuccess, 
   uploadError, 
   uploadComplete, 
-  addFileToProp, 
+  addImageToProp, 
   setLocation,
   linkRedaToProp,
 } from '../actions';
@@ -33,7 +33,7 @@ export function* watchUploadFileRequest() {
   yield takeEvery(ActionTypes.UPLOAD_REQUEST, function*(action) {
     try {
       const file = action.payload;
-      yield put(addFileToProp(file));
+      yield put(addImageToProp(file));
       //yield call(uploadFileSaga, file);
       const userId = yield select(getUserId)
       const propId = yield select(getPropId)

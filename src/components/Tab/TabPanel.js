@@ -71,13 +71,13 @@ class TabPanel extends React.Component {
   };
 
   render() {
-    const { classes, images } = this.props;
+    const { classes, images, title } = this.props;
     const { value } = this.state;
 
     return (
       <div className={classes.root}>
         <Typography variant="title"  className={classes.title}>
-          Pictures of the property
+          {title ? title : '\u00A0'}
         </Typography>
         <ImageCarousel images={images} />
       </div>

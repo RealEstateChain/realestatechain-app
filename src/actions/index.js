@@ -6,13 +6,19 @@ export const ActionTypes = {
     UPLOAD_SUCCESS:  'UPLOAD_SUCCESS',
     UPLOAD_ERROR:  'UPLOAD_ERROR',
     UPLOAD_COMPLETE: 'UPLOAD_COMPLETE',
-    ADD_FILE: 'ADD_FILE',
+    ADD_IMAGE: 'ADD_IMAGE',
+    ADD_FLOORPLAN: 'ADD_FLOORPLAN',
     COMPLETE_TASK: 'COMPLETE_TASK',
     GOT_LISTINGS: 'GOT_LISTINGS',
     LINK_REDA: 'LINK_REDA',
     WEB3_INITIALIZED: 'WEB3_INITIALIZED',
     SET_ACCOUNTS: 'SET_ACCOUNTS',
     CREATE_REDA: 'CREATE_REDA',
+    SET_TITLE: 'SET_TITLE',
+    SET_ADDRESS: 'SET_ADDRESS',
+    SET_EXTRA: 'SET_EXTRA',
+    SET_CONTRACT_ADDRESS: 'SET_CONTRACT_ADDRESS',
+    SET_PRICE: 'SET_PRICE',
 };
 
 export const requestFileUpload = (file) => ({
@@ -45,9 +51,39 @@ export const uploadComplete = () => ({
     payload: null,
 });
 
-export const addFileToProp = (file) => ({
-    type: ActionTypes.ADD_FILE,
-    payload: file,
+export const addImageToProp = (image) => ({
+    type: ActionTypes.ADD_IMAGE,
+    payload: image,
+});
+
+export const addFloorplanToProp = (image) => ({
+    type: ActionTypes.ADD_FLOORPLAN,
+    payload: image,
+});
+
+export const setPropTitle = (title) => ({
+    type: ActionTypes.SET_TITLE,
+    payload: title,
+});
+
+export const setPropAddress = (address) => ({
+    type: ActionTypes.SET_ADDRESS,
+    payload: address,
+});
+
+export const setPropExtra = (extra) => ({
+    type: ActionTypes.SET_EXTRA,
+    payload: extra,
+});
+
+export const setPropPrice = (price) => ({
+    type: ActionTypes.SET_PRICE,
+    payload: price,
+});
+
+export const setPropContractAddress = (contractAddress) => ({
+    type: ActionTypes.SET_CONTRACT_ADDRESS,
+    payload: contractAddress,
 });
 
 export const linkRedaToProp = (address) => ({

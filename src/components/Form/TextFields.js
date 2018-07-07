@@ -71,16 +71,8 @@ class TextFields extends React.Component {
           margin="normal"
         />
         <TextField
-          error
-          id="error"
-          label="Error"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="multiline-flexible"
-          label="Multiline"
+          id="address"
+          label="Address"
           multiline
           rowsMax="4"
           value={this.state.address}
@@ -89,18 +81,18 @@ class TextFields extends React.Component {
           margin="normal"
         />
         <TextField
-          id="multiline-flexible"
-          label="Multiline"
+          id="extra"
+          label="Extra (JSON)"
           multiline
-          rowsMax="4"
+          rowsMax="99"
           value={this.state.extraJson}
           onChange={this.handleChange('extraJson')}
           className={classes.textField}
           margin="normal"
         />
         <TextField
-          id="number"
-          label="Number"
+          id="price"
+          label="Price"
           value={this.state.price}
           onChange={this.handleChange('price')}
           type="number"
@@ -113,7 +105,7 @@ class TextFields extends React.Component {
         <TextField
           id="select-currency"
           select
-          label="Select"
+          label="Currency"
           className={classes.textField}
           value={this.state.currency}
           onChange={this.handleChange('currency')}
