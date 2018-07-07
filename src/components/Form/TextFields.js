@@ -53,7 +53,14 @@ class TextFields extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { 
+      classes, 
+      fields, 
+      setPropTitle,
+      setPropAddress,
+      setPropExtra,
+      setPropContractAddress,
+      setPropPrice, } = this.props;
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
@@ -65,8 +72,11 @@ class TextFields extends React.Component {
           }}
           placeholder="Enter a title for the property"
           helperText="Enter a title for the property"
-          value={this.state.title}
-          onChange={this.handleChange('title')}
+          value={fields.title}
+          onChange={(event) => { 
+            this.handleChange('title')
+            setPropTitle(event.target.value)
+          }}
           fullWidth
           margin="normal"
         />
@@ -76,7 +86,10 @@ class TextFields extends React.Component {
           multiline
           rowsMax="4"
           value={this.state.address}
-          onChange={this.handleChange('address')}
+          onChange={(event) => { 
+            this.handleChange('address')
+            setPropAddress(event.target.value)
+          }}
           className={classes.textField}
           margin="normal"
         />
@@ -85,8 +98,11 @@ class TextFields extends React.Component {
           label="Extra (JSON)"
           multiline
           rowsMax="99"
-          value={this.state.extraJson}
-          onChange={this.handleChange('extraJson')}
+          value={this.state.extra}
+          onChange={(event) => { 
+            this.handleChange('extra')
+            setPropExtra(event.target.value)
+          }}
           className={classes.textField}
           margin="normal"
         />
@@ -94,7 +110,10 @@ class TextFields extends React.Component {
           id="price"
           label="Price"
           value={this.state.price}
-          onChange={this.handleChange('price')}
+          onChange={(event) => { 
+            this.handleChange('price')
+            setPropPrice(event.target.value)
+          }}
           type="number"
           className={classes.textField}
           InputLabelProps={{
@@ -102,27 +121,7 @@ class TextFields extends React.Component {
           }}
           margin="normal"
         />
-        <TextField
-          id="select-currency"
-          select
-          label="Currency"
-          className={classes.textField}
-          value={this.state.currency}
-          onChange={this.handleChange('currency')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Please select your currency"
-          margin="normal"
-        >
-          {currencies.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        
       </form>
     );
   }

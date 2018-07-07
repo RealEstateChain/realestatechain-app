@@ -59,7 +59,7 @@ import ProgressBar from "./Tasks/ProgressBar.js";
 import TaskList from "./TaskList.jsx";
 import TaskItem from "./TaskItem.jsx";
 
-import TextInputModal from "./Modal/TextInputModal";
+import PropDataModal from "./Modal/PropDataModal";
 import UploadModal from "./Modal/UploadModal.jsx";
 
 // ##############################
@@ -107,7 +107,7 @@ export {
   TaskList,
   TaskItem,
   // Modal
-  TextInputModal,
+  PropDataModal,
   UploadModal,
   // Typography
   P,

@@ -6,6 +6,12 @@ import {
 	requestFileUpload,
 	completeTask,
 	addImageToProp,
+  addFloorplanToProp,
+  setPropTitle,
+  setPropAddress,
+  setPropExtra,
+  setPropContractAddress,
+  setPropPrice,
 	createREDA,
   
 	sendTokens,
@@ -37,7 +43,13 @@ const mapDispatchToProps = dispatch => {
   return {
   	completeTask: (task) => { dispatch(completeTask(task)) },
   	handleFileUpload: (file) => { dispatch(requestFileUpload(file)) },
-  	addImageToProp: (file) => { dispatch(addImageToProp(file)) },
+  	addImageToProp: (image) => { dispatch(addImageToProp(image)) },
+    addFloorplanToProp: (fp) => { dispatch(addFloorplanToProp(fp)) },
+    setPropTitle: (title) => { dispatch(setPropTitle(title)) },
+    setPropAddress: (addr) => { dispatch(setPropAddress(addr)) },
+    setPropExtra: (extra) => { dispatch(setPropExtra(extra)) },
+    setPropContractAddress: (addr) => { dispatch(setPropContractAddress(addr)) },
+    setPropPrice: (price) => { dispatch(setPropPrice(price)) },
     createREDA: (data) => { dispatch(createREDA(data))},
     // coming later:
     send: () => dispatch(sendTokens()),

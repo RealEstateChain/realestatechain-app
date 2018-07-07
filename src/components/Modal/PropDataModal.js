@@ -26,7 +26,7 @@ const modalStyle = {
   color: 'white',
 };
 
-class TextInputModal extends React.Component {
+class PropDataModal extends React.Component {
   state = {
     cancelButtonClicked: false,
     open: false,
@@ -65,7 +65,7 @@ class TextInputModal extends React.Component {
   }
 
   render() {
-    const { classes, isOpen, handleClose, handleFieldChange } = this.props;
+    const { classes, prop, isOpen, handleClose, handleFieldChange, ...rest } = this.props;
 
     return (
       <div>
@@ -76,8 +76,10 @@ class TextInputModal extends React.Component {
           onClose={handleClose}
           >
           <div style={modalStyle} className={classes.paper}>
-            <TextFields handleFieldChange={this.handleFieldChange} />
-              
+            <TextFields 
+              fields={prop} 
+              handleFieldChange={this.handleFieldChange} 
+              { ...rest } />
           </div>
         </Modal>
       </div>
@@ -85,10 +87,10 @@ class TextInputModal extends React.Component {
   }
 }
 
-TextInputModal.propTypes = {
+PropDataModal.propTypes = {
+  prop: PropTypes.object.isRequired,
   isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  handleFileUpload: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(TextInputModal);
+export default withStyles(styles)(PropDataModal);

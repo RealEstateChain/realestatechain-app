@@ -44,7 +44,7 @@ class Dashboard extends Component {
                 <TabPanel images={prop.images} title={prop.title} { ...rest } />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
-                <Tasks { ...rest } />
+                <Tasks prop={prop} { ...rest } />
               </ItemGrid>
             </Grid>
           </div>

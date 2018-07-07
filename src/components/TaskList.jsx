@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DoneIcon from '@material-ui/icons/Done';
 
-import { TaskItem, UploadModal, TextInputModal } from '../components';
+import { TaskItem, UploadModal, PropDataModal } from '../components';
 
 
 const styles = theme => ({
@@ -62,7 +62,7 @@ class TaskList extends React.Component {
   }
 
   render() {
-    const { classes, user, handleFileUpload, handleFieldChange } = this.props;
+    const { classes, user, prop, handleFileUpload, handleFieldChange, ...rest } = this.props;
     const { secondary, uploadModalIsOpen, dataModalIsOpen } = this.state;
 
     return (
@@ -104,11 +104,13 @@ class TaskList extends React.Component {
               handleFileUpload={handleFileUpload}
               createREDA={this.props.createREDA} />
 
-              <TextInputModal 
-              handleClose={() => this.handleModalClose('data')} 
-              isOpen={this.state.dataModalIsOpen} 
-              handleFileUpload={handleFieldChange}
-              updateREDA={this.props.updateReda} />
+              <PropDataModal 
+                prop={prop}
+                handleClose={() => this.handleModalClose('data')} 
+                isOpen={this.state.dataModalIsOpen} 
+                handleFileUpload={handleFieldChange}
+                updateREDA={this.props.updateReda}
+                { ...rest } />
           </Grid>
         </Grid>
       </div>

@@ -1,9 +1,9 @@
 const propInitialState = {
   id: '101',
-  title: '',
-  address: '',
+  title: 'Luxury Two Bedroom Apartment in the Seaport',
+  address: '200 Seaport Boulevard',
   extra: '',
-  price: '',
+  price: '720000',
 	images: [
 		"https://media.architecturaldigest.com/photos/5ae77bc796f061514d5668e7/4:3/w_670/315470384.jpg",
 	],

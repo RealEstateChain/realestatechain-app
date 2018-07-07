@@ -66,13 +66,15 @@ class Tasks extends React.Component {
   };
 
   render() {
-    const { classes, tasksIndexes, tasks, accounts, user } = this.props;
+    const { classes, tasksIndexes, tasks, accounts, user, prop, ...rest } = this.props;
     return (
       <TaskList 
         user={user} 
+        prop={prop}
         completeTask={this.props.completeTask}
         handleFileUpload={this.props.handleFileUpload} 
         createREDA={this.props.createREDA}
+        { ...rest }
       />
       
     );
