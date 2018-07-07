@@ -10,6 +10,7 @@ import App from './App'
 //import HomeContainer from './layouts/home/HomeContainer'
 import SearchContainer from './layouts/search/SearchContainer'
 import DashboardContainer from './layouts/dashboard/DashboardContainer'
+import ViewOnlyREDAContainer from './layouts/reda/ViewOnlyREDAContainer'
 
 import store from './store'
 import getWeb3 from './util/web3/getWeb3'
@@ -43,6 +44,7 @@ ReactDOM.render((
             <IndexRoute component={DashboardContainer} />
             { /* <Route path="/home" component={HomeContainer} /> */ }
             <Route path="/search" component={SearchContainer} />
+            <Route path="/reda" component={ViewOnlyREDAContainer} />
           </Route>
         </Router>
       </Provider>

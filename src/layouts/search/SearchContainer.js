@@ -17,7 +17,7 @@ class SearchContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    propWallet: state.propWallet,
+    prop: state.prop,
     listings: state.listings,
   }
 }
