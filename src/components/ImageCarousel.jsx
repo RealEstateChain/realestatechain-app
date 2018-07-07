@@ -32,7 +32,7 @@ class ImageCarousel extends Component {
           { (images || []).map((image, index) => {
             return ( 
               <div key={index}>
-                <img src={ image } />
+                <img src={(image.indexOf('http') < 0 ? require(`../${image}`) : image)} />
                 <p className="legend">Placeholder</p>
               </div>
             );

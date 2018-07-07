@@ -28,8 +28,13 @@ class ViewOnlyREDA extends Component {
     super(props)
   }
 
+  getSelectedREDA = (redas, selected) => {
+    return redas[selected]
+  };
+
   render() {
-    const { classes, prop, ...rest } = this.props;
+    const { classes, listings, ...rest } = this.props;
+    const prop = this.getSelectedREDA(listings.matches, listings.selected);
     return(
       <div className={classes.wrapper}>
 
@@ -41,7 +46,7 @@ class ViewOnlyREDA extends Component {
           <div className={classes.content}>
             <Grid container>
               <ItemGrid xs={12} sm={12} md={8}>
-                <TabPanel images={prop.images} title={prop.title} { ...rest } />
+                <TabPanel images={prop.images} title={prop.name} { ...rest } />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
                 

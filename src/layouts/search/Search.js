@@ -121,7 +121,7 @@ class Search extends Component {
               return (
                 <ItemGrid xs={12} sm={6} md={4}>
                   <ItemContainer href="#" key={i}>
-                    <Item src={require(`../../${listing.picture}`)} />
+                    <Item src={require(`../../${listing.images[0]}`)} />
                     <ImageOverlay></ImageOverlay>
                     <Age>{listing.age} days on Real Estate Chain</Age>
                     <ItemText>

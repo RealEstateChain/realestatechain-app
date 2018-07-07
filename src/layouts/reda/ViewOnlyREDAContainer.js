@@ -23,6 +23,7 @@ const mapStateToProps = state => {
     accounts: state.web3.accounts,
     user: state.user,
     prop: state.prop,
+    listings: state.listings,
   }
 }
 
