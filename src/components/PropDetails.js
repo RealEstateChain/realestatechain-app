@@ -4,29 +4,31 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
-import DoneIcon from '@material-ui/icons/Done';
-
 
 //import {  } from '../components';
 
 
 const styles = theme => ({
   root: {
-    display: "flex",
-    flexGrow: 1,
-    maxWidth: 752,
+    width: '100%',
+    maxWidth: 360,
+    position: 'relative',
+    overflow: 'auto',
+    maxHeight: 400,
+  },
+  listSection: {
+    width: "100%",
+    backgroundColor: 'inherit',
+  },
+  ul: {
+    backgroundColor: 'inherit',
+    padding: 0,
+    fontSize: '11px',
   },
   demo: {
     backgroundColor: theme.palette.background.paper,
@@ -34,6 +36,9 @@ const styles = theme => ({
   title: {
     margin: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 4}px`,
   },
+  detailsText: {
+    fontSize: '0.75em',
+  }
 });
 
 class PropDetails extends React.Component {
@@ -41,9 +46,20 @@ class PropDetails extends React.Component {
 
   };
 
+  getRedaDetails = (prop) => {
+    return [
+      'South Boston Developers created this listing',
+      'King Street Brokers purchased this listing',
+      'Jane Smith added pictures to this listing',
+      'Bob Jones was the contractor for the property',
+      'Steel Square Agency purchased this listing',
+      'Jack and Jessica Bumpkin purchased the property',
+    ]
+  }
+
   render() {
     const { classes, prop } = this.props;
-
+    const redaDetails = this.getRedaDetails(prop);
     return (
       <div className={classes.root}>
         
@@ -53,8 +69,21 @@ class PropDetails extends React.Component {
               Property Details
             </Typography>
             <div className={classes.demo}>
-              <List>
-                  
+              <List className={classes.root} subheader={<li />}>
+                {[0, 1].map(sectionId => (
+                  <li key={`section-${sectionId}`} className={classes.listSection}>
+                    <ul className={classes.ul}>
+                      <ListSubheader>{`Section ${sectionId}`}</ListSubheader>
+                      {redaDetails.map(item => (
+                        <ListItem key={`item-${sectionId}-${item}`}>
+                          <Typography variant="text" className={classes.detailsText}>
+                            <ListItemText primary={`${item}`} />
+                          </Typography>
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
               </List>
             </div>
           </Grid>

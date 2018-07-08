@@ -125,7 +125,7 @@ class Search extends Component {
                     <ImageOverlay></ImageOverlay>
                     <Age>{listing.age} days on Real Estate Chain</Age>
                     <ItemText>
-                      <Name href="#">{listing.name}</Name> <br />
+                      <Name href="#">{listing.title}</Name> <br />
                       <Description>{listing.descriptionShort}, {listing.source}</Description> <br />
                       <Location><b>{listing.locality}, {listing.location}</b></Location> <br />
                       <Price>USD${numberWithCommas(listing.price)}</Price> 

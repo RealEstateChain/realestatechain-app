@@ -2,8 +2,17 @@ const listingsInitialState = {
 	matches: [
 	  {
 	    "id": 0,
-	    "name": "House 1",
-	    "images": ["assets/img/properties/house1.jpeg"],
+	    "title": "Groton School",
+	    "address": "62 Groton School Rd",
+	    "images": [
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/01.jpg",
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/02.jpg",
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/03.jpg",
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/04.jpg",
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/05.jpg",
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/06.jpg",
+	    	"https://s3.us-east-2.amazonaws.com/prototypecontent/62+Groton+School+Road/07.jpg"
+	    ],
 	    "age": 3,
 	    "locality": "Lisco",
 			"location": "Alabama",
@@ -13,7 +22,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 1,
-	    "name": "House 2",
+	    "title": "House 2",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house1.jpeg"],
 	    "age": 3,
 	    "locality": "Tooleville",
@@ -24,7 +34,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 2,
-	    "name": "House 3",
+	    "title": "House 3",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house2.jpeg"],
 	    "age": 2,
 	    "locality": "Freeburn",
@@ -35,7 +46,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 3,
-	    "name": "House 4",
+	    "title": "House 4",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house3.jpeg"],
 	    "age": 2,
 	    "locality": "Camas",
@@ -46,7 +58,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 4,
-	    "name": "House 5",
+	    "title": "House 5",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house2.jpeg"],
 	    "age": 2,
 	    "locality": "Gerber",
@@ -57,7 +70,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 5,
-	    "name": "House 6",
+	    "title": "House 6",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house2.jpeg"],
 	    "age": 3,
 	    "locality": "Innsbrook",
@@ -68,7 +82,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 6,
-	    "name": "House 7",
+	    "title": "House 7",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house4.jpeg"],
 	    "age": 3,
 	    "locality": "Soudan",
@@ -79,7 +94,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 7,
-	    "name": "House 8",
+	    "title": "House 8",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house4.jpeg"],
 	    "age": 3,
 	    "locality": "Jacksonwald",
@@ -90,7 +106,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 8,
-	    "name": "House 9",
+	    "title": "House 9",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house2.jpeg"],
 	    "age": 2,
 	    "locality": "Honolulu",
@@ -101,7 +118,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 9,
-	    "name": "House 10",
+	    "title": "House 10",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house3.jpeg"],
 	    "age": 3,
 	    "locality": "Mathen",
@@ -112,7 +130,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 10,
-	    "name": "House 11",
+	    "title": "House 11",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house3.jpeg"],
 	    "age": 2,
 	    "locality": "Tyhee",
@@ -123,7 +142,8 @@ const listingsInitialState = {
 	  },
 	  {
 	    "id": 11,
-	    "name": "House 12",
+	    "title": "House 12",
+	    "address": "62 Groton School Rd",
 	    "images": ["assets/img/properties/house1.jpeg"],
 	    "age": 3,
 	    "locality": "Windsor",

@@ -47,7 +47,7 @@ class ViewOnlyREDA extends Component {
           <div className={classes.content}>
             <Grid container>
               <ItemGrid xs={12} sm={12} md={8}>
-                <TabPanel images={prop.images} title={prop.name} { ...rest } />
+                <TabPanel images={prop.images} title={prop.title} { ...rest } />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
                 <PropDetails 
