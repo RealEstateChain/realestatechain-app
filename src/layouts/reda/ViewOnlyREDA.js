@@ -7,6 +7,7 @@ import {
   Header,
   Footer,
   TabPanel,
+  PropDetails,
 } from "../../components";
 import Dashboard from "../dashboard/Dashboard.js"
 
@@ -49,7 +50,10 @@ class ViewOnlyREDA extends Component {
                 <TabPanel images={prop.images} title={prop.name} { ...rest } />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
-                
+                <PropDetails 
+                  prop={prop}
+                  { ...rest }
+                />
               </ItemGrid>
             </Grid>
           </div>

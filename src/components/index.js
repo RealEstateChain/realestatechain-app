@@ -59,6 +59,8 @@ import ProgressBar from "./Tasks/ProgressBar.js";
 import TaskList from "./TaskList.jsx";
 import TaskItem from "./TaskItem.jsx";
 
+import PropDetails from "./PropDetails.js"
+
 import PropDataModal from "./Modal/PropDataModal";
 import UploadModal from "./Modal/UploadModal.jsx";
 
@@ -106,6 +108,8 @@ export {
   //List 
   TaskList,
   TaskItem,
+
+  PropDetails,
   // Modal
   PropDataModal,
   UploadModal,
