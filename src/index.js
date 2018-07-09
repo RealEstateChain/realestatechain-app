@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { browserHistory , Router, IndexRoute, Route } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import { Provider } from 'react-redux';
@@ -42,9 +42,8 @@ ReactDOM.render((
         <Router history={history}>
           <Route path="/" component={App}>
             <IndexRoute component={DashboardContainer} />
-            { /* <Route path="/home" component={HomeContainer} /> */ }
             <Route path="/search" component={SearchContainer} />
-            <Route path="/reda" component={ViewOnlyREDAContainer} />
+            <Route path="/reda/:redaId" component={ViewOnlyREDAContainer} />
           </Route>
         </Router>
       </Provider>

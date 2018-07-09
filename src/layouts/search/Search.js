@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, InputLabel, withStyles, Typography } from "material-ui";
+import { Link, BrowserRouter as Router } from 'react-router-dom'
 import styled from 'styled-components';
 
 import {
@@ -66,7 +67,7 @@ const ItemText = styled.div `
   font-size: .7rem;
 `
 
-const Name = styled.a `
+const Name = styled.p `
   text-decoration: none;
   color: white;
   font-size: 1rem;
@@ -110,7 +111,7 @@ class Search extends Component {
     const { classes, listings, ...rest } = this.props;
     return(
       <div className={classes.wrapper}>
-
+        <Router>
         <div className={classes.mainPanel} ref="mainPanel">
           <Header
             {...rest}
@@ -119,13 +120,16 @@ class Search extends Component {
             <Grid container>
             { listings.matches && listings.matches.map((listing, i) => {
               return (
-                <ItemGrid xs={12} sm={6} md={4}>
-                  <ItemContainer href="#" key={i}>
-                    <Item src={require(`../../${listing.images[0]}`)} />
+                <ItemGrid xs={12} sm={6} md={4} key={i}>
+                  <ItemContainer href={`/reda/${listing.id}`} key={i}>
+                    
+                    <Item src={listing.images[0].indexOf('http') < 0 ? require(`../../${listing.images[0]}`) : listing.images[0]} />
+                    
                     <ImageOverlay></ImageOverlay>
+                    
                     <Age>{listing.age} days on Real Estate Chain</Age>
                     <ItemText>
-                      <Name href="#">{listing.title}</Name> <br />
+                      <Name>{listing.title}</Name> <br />
                       <Description>{listing.descriptionShort}, {listing.source}</Description> <br />
                       <Location><b>{listing.locality}, {listing.location}</b></Location> <br />
                       <Price>USD${numberWithCommas(listing.price)}</Price> 
@@ -138,6 +142,7 @@ class Search extends Component {
           </div>
           <Footer />
         </div>
+        </Router>
       </div>
     )
   }

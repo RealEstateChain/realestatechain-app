@@ -30,12 +30,15 @@ class ViewOnlyREDA extends Component {
   }
 
   getSelectedREDA = (redas, selected) => {
+    if (!selected) {
+      selected = 0
+    }
     return redas[selected]
   };
 
   render() {
-    const { classes, listings, ...rest } = this.props;
-    const prop = this.getSelectedREDA(listings.matches, listings.selected);
+    const { classes, listings, redaId, ...rest } = this.props;
+    const prop = this.getSelectedREDA(listings.matches, redaId);
     return(
       <div className={classes.wrapper}>
 

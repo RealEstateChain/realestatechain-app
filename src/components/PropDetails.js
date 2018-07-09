@@ -65,9 +65,11 @@ class PropDetails extends React.Component {
         
         <Grid container spacing={16}>
           <Grid item xs={12} md={12}>
+            <div>
             <Typography variant="title" className={classes.title}>
               Property Details
             </Typography>
+            </div>
             <div className={classes.demo}>
               <List className={classes.root} subheader={<li />}>
                 {[0, 1].map(sectionId => (
@@ -76,9 +78,7 @@ class PropDetails extends React.Component {
                       <ListSubheader>{`Section ${sectionId}`}</ListSubheader>
                       {redaDetails.map(item => (
                         <ListItem key={`item-${sectionId}-${item}`}>
-                          <Typography variant="text" className={classes.detailsText}>
-                            <ListItemText primary={`${item}`} />
-                          </Typography>
+                          <ListItemText primary={`${item}`} />
                         </ListItem>
                       ))}
                     </ul>
