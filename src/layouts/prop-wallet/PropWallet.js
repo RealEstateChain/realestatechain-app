@@ -9,7 +9,7 @@ import {
   Tasks,
 } from "../../components";
 
-import UserProfile from "../../user/layouts/profile/Profile.js";
+import UserProfile from "../../user/layouts/profile/Profile";
 
 import {
   Dashboard as DashboardIcon,
@@ -18,11 +18,11 @@ import {
 
 import logo from '../../logo.png'
 
-import appStyle from "../../assets/jss/material-dashboard-react/appStyle.jsx";
+import appStyle from "../../assets/jss/material-dashboard-react/appStyle";
 
 import avatar from '../../logo.png';
 
-class Dashboard extends Component {
+class PropWallet extends Component {
   constructor(props, { authData }) {
     super(props)
     authData = this.props
@@ -35,7 +35,7 @@ class Dashboard extends Component {
 
         <div className={classes.mainPanel} ref="mainPanel">
           <Header
-            routes={dashboardRoutes}
+            routes={headerRoutes}
             {...rest}
           />
           <div className={classes.content}>
@@ -55,13 +55,13 @@ class Dashboard extends Component {
   }
 }
 
-const dashboardRoutes = [
+const headerRoutes = [
   {
-    path: "/dashboard",
-    sidebarName: "Dashboard",
-    navbarName: "Material Dashboard",
+    path: "/prop-wallet",
+    sidebarName: "PropWallet",
+    navbarName: "PropWallet",
     icon: DashboardIcon,
-    component: Dashboard
+    component: PropWallet
   },
   {
     path: "/user",
@@ -70,7 +70,7 @@ const dashboardRoutes = [
     icon: Person,
     component: UserProfile
   },
-  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
+  { redirect: true, path: "/", to: "/prop-wallet", navbarName: "Redirect" }
 ];
 
-export default withStyles(appStyle)(Dashboard)
+export default withStyles(appStyle)(PropWallet)

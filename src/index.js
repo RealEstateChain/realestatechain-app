@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import App from './App'
 //import HomeContainer from './layouts/home/HomeContainer'
 import SearchContainer from './layouts/search/SearchContainer'
-import DashboardContainer from './layouts/dashboard/DashboardContainer'
+import PropWalletContainer from './layouts/prop-wallet/PropWalletContainer'
 import ViewOnlyREDAContainer from './layouts/reda/ViewOnlyREDAContainer'
 
 import store from './store'
@@ -41,7 +41,7 @@ ReactDOM.render((
       <Provider store={store}>
         <Router history={history}>
           <Route path="/" component={App}>
-            <IndexRoute component={DashboardContainer} />
+            <IndexRoute component={PropWalletContainer} />
             <Route path="/search" component={SearchContainer} />
             <Route path="/reda/:redaId" component={ViewOnlyREDAContainer} />
           </Route>

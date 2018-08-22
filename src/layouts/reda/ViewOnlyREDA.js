@@ -9,7 +9,7 @@ import {
   TabPanel,
   PropDetails,
 } from "../../components";
-import Dashboard from "../dashboard/Dashboard.js"
+import PropWallet from "../prop-wallet/PropWallet.js"
 
 import UserProfile from "../../user/layouts/profile/Profile.js";
 
@@ -44,7 +44,7 @@ class ViewOnlyREDA extends Component {
 
         <div className={classes.mainPanel} ref="mainPanel">
           <Header
-            routes={dashboardRoutes}
+            routes={headerRoutes}
             {...rest}
           />
           <div className={classes.content}>
@@ -67,13 +67,13 @@ class ViewOnlyREDA extends Component {
   }
 }
 
-const dashboardRoutes = [
+const headerRoutes = [
   {
-    path: "/dashboard",
-    sidebarName: "Dashboard",
-    navbarName: "Material Dashboard",
+    path: "/prop-wallet",
+    sidebarName: "PropWallet",
+    navbarName: "PropWallet",
     icon: DashboardIcon,
-    component: Dashboard
+    component: PropWallet
   },
   {
     path: "/user",
@@ -82,7 +82,7 @@ const dashboardRoutes = [
     icon: Person,
     component: UserProfile
   },
-  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
+  { redirect: true, path: "/", to: "/prop-wallet", navbarName: "Redirect" }
 ];
 
 export default withStyles(appStyle)(ViewOnlyREDA)

@@ -4,7 +4,7 @@ import config from '../../config/aws'
 
 import web3 from "./web3";
 
-const recStorageApi = `https://dr8k381y1h.execute-api.us-east-1.amazonaws.com/dev/upload/secure-uri?`
+const recStorageApi = config.storageUri;
 
 const getData = (hash) => {
   return fetch(`${config.gateway}/aws/${hash}`)

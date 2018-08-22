@@ -34,5 +34,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewOnlyREDAContainer);
-
-//export default DashboardContainer

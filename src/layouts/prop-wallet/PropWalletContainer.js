@@ -1,4 +1,4 @@
-import Dashboard from './Dashboard';
+import PropWallet from './PropWallet';
 import { connect } from 'react-redux';
 import React from 'react';
 import { withStyles } from "material-ui";
@@ -22,10 +22,10 @@ import {
 
 //import appStyle from "../../assets/jss/material-dashboard-react/appStyle.jsx";
 
-class DashboardContainer extends React.Component {
+class PropWalletContainer extends React.Component {
 	render() {
 		return (
-			<Dashboard { ...this.props } />
+			<PropWallet { ...this.props } />
 		)
 	}
 }
@@ -59,6 +59,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
-
-//export default DashboardContainer
+export default connect(mapStateToProps, mapDispatchToProps)(PropWalletContainer);

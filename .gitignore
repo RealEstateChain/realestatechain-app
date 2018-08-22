@@ -1,6 +1,7 @@
 build
 dist
 node_modules
+config/aws.js
 \.vscode/launch\.json
 
 *.DS_Store
