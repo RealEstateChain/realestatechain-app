@@ -1,44 +1,64 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { Carousel } from 'react-responsive-carousel';
 
-import { withStyles } from '@material-ui/core/styles';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Gallery from 'react-photo-gallery';
+import Lightbox from 'react-images';
 
 class ImageCarousel extends Component {
+  constructor() {
+    super();
+    this.state = { currentImage: 0 };
+    this.closeLightbox = this.closeLightbox.bind(this);
+    this.openLightbox = this.openLightbox.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
+    this.gotoPrevious = this.gotoPrevious.bind(this);
+  }
+  openLightbox(event, obj) {
+    this.setState({
+      currentImage: obj.index,
+      lightboxIsOpen: true,
+    });
+  }
+  closeLightbox() {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false,
+    });
+  }
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    });
+  }
+
   render() {
-    const { images } = this.props;
-    const settings = {
-      customPaging: function(i) {
-        return (
-          <a>
-            <img src={`${images[i]}`} />
-          </a>
-        );
-      },
-      dots: true,
-      dotsClass: "slick-dots slick-thumb",
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
+    const { images, title } = this.props;
+    const galleryImages = images.map((image, index) => {
+      return {
+        src: image,
+        width: 4, 
+        height: 3 
+      }
+    });
 
     return (
       <div>
       { images.length ? (
-        <Carousel showThumbs={false}>
-          { (images || []).map((image, index) => {
-            return ( 
-              <div key={index}>
-                <img src={(image.indexOf('http') < 0 ? require(`../${image}`) : image)} />
-                <p className="legend">Placeholder</p>
-              </div>
-            );
-          })
-        }
-        </Carousel>
+        <div>
+        <Gallery photos={galleryImages} onClick={this.openLightbox} />
+        <Lightbox images={galleryImages}
+          onClose={this.closeLightbox}
+          onClickPrev={this.gotoPrevious}
+          onClickNext={this.gotoNext}
+          currentImage={this.state.currentImage}
+          isOpen={this.state.lightboxIsOpen}
+        />
+        </div>
       ) : (
         <span> No images </span>
       )}
@@ -51,4 +71,4 @@ ImageCarousel.propTypes = {
   images: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(ImageCarousel);
+export default ImageCarousel;

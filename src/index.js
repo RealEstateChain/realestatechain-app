@@ -14,7 +14,6 @@ import ViewOnlyREDAContainer from './layouts/reda/ViewOnlyREDAContainer'
 
 import store from './store'
 import getWeb3 from './util/web3/getWeb3'
-import services from './services'
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
