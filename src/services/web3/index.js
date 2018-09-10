@@ -1,5 +1,4 @@
 //import config from '../../config'
-import store from '../../store'
 import redaAbi from './redaAbi'
 import redaFactoryAbi from './redaFactoryAbi'
 import rezAbi from './rezAbi'
@@ -129,21 +128,29 @@ const createNewREDA = (propWallet, creator) => { /* returns Promise */
 }
 
 const getRedaDetails = (id) => {
-  return web3Interface.getRedaFctory().methods.redas(id).call()
+  return web3Interface.getRedaFactory().methods.redas(id).call()
   .then((reda) => {
     return reda
   });
 }
 
+const getRedaHistory = (id) => {
+  return web3Interface.getRedaFactory().getPastEvents("NewReda", { fromBlock: 0, toBlock: "latest" })
+  .then(function(events) {
+    // `events` is an array of `event` objects 
+    return events;
+  });
+}
+
 const redaToOwner = (id) => {
-  return web3Interface.getRedaFctory().methods.redaToOwner(id).call()
+  return web3Interface.getRedaFactory().methods.redaToOwner(id).call()
   .then((owner) => {
     return owner
   });
 }
 
 const getRedasByOwner = (owner) => {
-  return web3Interface.getRedaFctory().methods.getRedasByOwner(owner).call()
+  return web3Interface.getRedaFactory().methods.getRedasByOwner(owner).call()
   .then((redas) => {
     return redas
   });
@@ -162,6 +169,7 @@ export default {
   // getRedaInfo,
   createNewREDA,
   getRedaDetails,
+  getRedaHistory,
   redaToOwner,
   getRedasByOwner,
   // updateREDA

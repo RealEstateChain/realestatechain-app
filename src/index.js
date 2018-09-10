@@ -21,6 +21,9 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
   },
+  shape: {
+    borderRadius: '20px'
+  }
 });
 
 // Initialize react-router-redux.

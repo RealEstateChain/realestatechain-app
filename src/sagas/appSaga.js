@@ -8,7 +8,8 @@ import {
 
 import { 
   ActionTypes,
-  web3Initialized
+  web3Initialized,
+  loadRedaHistory,
 } from '../actions';
 
 import services from '../services';
@@ -57,6 +58,25 @@ export function* watchCreateREDA() {
     const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
     console.log('new reda details:')
     console.dir(newRedaDetails)
+
+  } catch (e) {
+    console.log(e);
+    //yield put(handleError(e))
+    //yield put(uploadError(e))
+  }
+  
+}
+
+
+// Watch for an upload request and then
+// defer to another saga to perform the actual upload
+export function* watchLoadREDA() {
+  const action = yield take(ActionTypes.FETCH_REDA)
+  try {
+    const redaId = action.payload.redaId
+
+    const history = yield call(services.web3.getRedaHistory, redaId);
+    yield put(loadRedaHistory(history));
 
   } catch (e) {
     console.log(e);

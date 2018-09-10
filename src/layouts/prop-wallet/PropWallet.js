@@ -7,6 +7,7 @@ import {
   Footer,
   TabPanel,
   Tasks,
+  Web3Console
 } from "../../components";
 
 import UserProfile from "../../user/layouts/profile/Profile";
@@ -49,6 +50,7 @@ class PropWallet extends Component {
             </Grid>
           </div>
           <Footer />
+          <Web3Console />
         </div>
       </div>
     )

@@ -64,6 +64,8 @@ import PropDetails from "./PropDetails.js"
 import PropDataModal from "./Modal/PropDataModal";
 import UploadModal from "./Modal/UploadModal.jsx";
 
+import Web3Console from "./Web3Console.jsx";
+
 // ##############################
 // // // Typography
 // #############################
@@ -113,6 +115,8 @@ export {
   // Modal
   PropDataModal,
   UploadModal,
+
+  Web3Console,
   // Typography
   P,
   Quote,
