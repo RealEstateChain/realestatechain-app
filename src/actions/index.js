@@ -11,9 +11,11 @@ export const ActionTypes = {
     COMPLETE_TASK: 'COMPLETE_TASK',
     GOT_LISTINGS: 'GOT_LISTINGS',
     LINK_REDA: 'LINK_REDA',
+    FETCH_REDA: 'FETCH_REDA',
     WEB3_INITIALIZED: 'WEB3_INITIALIZED',
     SET_ACCOUNTS: 'SET_ACCOUNTS',
     CREATE_REDA: 'CREATE_REDA',
+    LOAD_REDA_HISTORY: 'LOAD_REDA_HISTORY',
     SET_TITLE: 'SET_TITLE',
     SET_ADDRESS: 'SET_ADDRESS',
     SET_EXTRA: 'SET_EXTRA',
@@ -86,6 +88,11 @@ export const setPropContractAddress = (contractAddress) => ({
     payload: contractAddress,
 });
 
+export const fetchReda = (id) => ({
+    type: ActionTypes.FETCH_REDA,
+    payload: id,
+});
+
 export const linkRedaToProp = (address) => ({
     type: ActionTypes.LINK_REDA,
     payload: address,
@@ -114,4 +121,9 @@ export const completeTask = (task) => ({
 export const createREDA = (propWallet) => ({
     type: ActionTypes.CREATE_REDA, 
     payload: propWallet,
+});
+
+export const loadRedaHistory = (history) => ({
+    type: ActionTypes.LOAD_REDA_HISTORY,
+    payload: history,
 });

@@ -50,7 +50,7 @@ class PropWallet extends Component {
             </Grid>
           </div>
           <Footer />
-          <Web3Console />
+          <Web3Console feed={prop.history} />
         </div>
       </div>
     )

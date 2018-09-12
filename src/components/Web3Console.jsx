@@ -38,6 +38,10 @@ class Web3Console extends React.Component {
         <List>REDA1 created 9/9/18 12:00:00</List>
         <Divider />
         <List>REDA1 updated 9/10/18 12:01:00</List>
+        { history ? history.forEach(item => {
+            return ( <List>item</List> )
+        }) :
+          <Divider /> }
       </div>
     );
 
@@ -46,6 +50,9 @@ class Web3Console extends React.Component {
         <List>REDA1 created 9/9/18 12:00:00</List>
         <Divider />
         <List>REDA1 updated 9/10/18 12:01:00</List>
+        { history && history.forEach(item => {
+            return ( <List>item</List> )
+        }) }
       </div>
     );
 

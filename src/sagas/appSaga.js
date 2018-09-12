@@ -10,6 +10,7 @@ import {
   ActionTypes,
   web3Initialized,
   loadRedaHistory,
+  fetchReda,
 } from '../actions';
 
 import services from '../services';
@@ -59,6 +60,7 @@ export function* watchCreateREDA() {
     console.log('new reda details:')
     console.dir(newRedaDetails)
 
+    yield put(fetchReda(newReda.id));
   } catch (e) {
     console.log(e);
     //yield put(handleError(e))

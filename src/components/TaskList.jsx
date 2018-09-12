@@ -109,13 +109,13 @@ class TaskList extends React.Component {
               handleFileUpload={handleFileUpload}
               createREDA={this.props.createREDA} />
 
-              <PropDataModal 
-                prop={prop}
-                handleClose={() => this.handleModalClose('data')} 
-                isOpen={this.state.dataModalIsOpen} 
-                handleFileUpload={handleFieldChange}
-                updateREDA={this.props.updateReda}
-                { ...rest } />
+            <PropDataModal 
+              prop={prop}
+              handleClose={() => this.handleModalClose('data')} 
+              isOpen={this.state.dataModalIsOpen} 
+              handleFileUpload={handleFieldChange}
+              updateREDA={this.props.updateReda}
+              { ...rest } />
           </Grid>
         </Grid>
       </div>

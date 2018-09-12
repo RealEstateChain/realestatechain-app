@@ -8,6 +8,7 @@ const propInitialState = {
 		"https://media.architecturaldigest.com/photos/5ae77bc796f061514d5668e7/4:3/w_670/315470384.jpg",
 	],
   floorplans: [],
+  history: [],
   contract: null
 };
 
@@ -66,6 +67,14 @@ const propReducer = (state = propInitialState, action) => {
         ...state.floorplans, 
         action.payload 
       ]
+    }
+  }
+
+  if (action.type === 'LOAD_REDA_HISTORY')
+  {
+    return {
+      ...state,
+      history: action.payload
     }
   }
 
