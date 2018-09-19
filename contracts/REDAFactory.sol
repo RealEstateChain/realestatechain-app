@@ -35,7 +35,6 @@ contract REDAFactory {
   }
 
   function createREDA(string _uri, string _meta) public {
-    require(ownerRedaCount[msg.sender] == 0);
     _createReda(_uri, _meta);
   }
 

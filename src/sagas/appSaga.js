@@ -2,6 +2,7 @@ import {
   call, 
   put, 
   take, 
+  takeEvery,
   all, 
   select 
 } from 'redux-saga/effects'
@@ -48,25 +49,25 @@ export function* watchWeb3Initialized() {
 }
 
 export function* watchCreateREDA() {
-  const action = yield take(ActionTypes.CREATE_REDA)
-  try {
-    const meta = JSON.stringify(action.payload)
-    const propWallet = { uri: `http://uri1`, meta: meta }
-    const creator = yield select(getUserAccount)
-    const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
-    console.log('created reda')
-    console.dir(newReda)
-    const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
-    console.log('new reda details:')
-    console.dir(newRedaDetails)
+  yield takeEvery(ActionTypes.CREATE_REDA, function*(action) {
+    try {
+      const meta = JSON.stringify(action.payload)
+      const propWallet = { uri: `http://uri1`, meta: meta }
+      const creator = yield select(getUserAccount)
+      const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
+      console.log('created reda')
+      console.dir(newReda)
+      const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
+      console.log('new reda details:')
+      console.dir(newRedaDetails)
 
-    yield put(fetchReda(newReda.id));
-  } catch (e) {
-    console.log(e);
-    //yield put(handleError(e))
-    //yield put(uploadError(e))
-  }
-  
+      yield put(fetchReda(newReda.id));
+    } catch (e) {
+      console.log(e);
+      //yield put(handleError(e))
+      //yield put(uploadError(e))
+    }
+  })
 }
 
 

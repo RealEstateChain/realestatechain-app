@@ -112,16 +112,10 @@ const createNewREDA = (propWallet, creator) => { /* returns Promise */
     .createREDA(propWallet.uri, propWallet.meta)
     .send({ from: creator, gasPrice: DEFAULT_GAS_PRICE })
     .on("receipt", (receipt) => {
-      debugger;
       console.log('REDA created')
       console.log(receipt)
-      getRedasByOwner(creator)
-      .then((redas) => {
-        console.log(redas)
-      });
     })
     .on("error", (error) => {
-      debugger;
       console.error(error)
     });
   })
