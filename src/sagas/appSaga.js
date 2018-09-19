@@ -54,12 +54,13 @@ export function* watchCreateREDA() {
       const meta = JSON.stringify(action.payload)
       const propWallet = { uri: `http://uri1`, meta: meta }
       const creator = yield select(getUserAccount)
-      const newReda = yield call(services.web3.createNewREDA, propWallet, creator)
+      const newRedaReceipt = yield call(services.web3.createNewREDA, propWallet, creator)
       console.log('created reda')
+      console.dir(newRedaReceipt)
+      const newReda = yield call(services.web3.getRedasByOwner, creator)
+      console.log('new reda:')
       console.dir(newReda)
-      const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
-      console.log('new reda details:')
-      console.dir(newRedaDetails)
+      //const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
 
       yield put(fetchReda(newReda.id));
     } catch (e) {

@@ -114,9 +114,12 @@ const createNewREDA = (propWallet, creator) => { /* returns Promise */
     .on("receipt", (receipt) => {
       console.log('REDA created')
       console.log(receipt)
+      resolve(receipt)
     })
     .on("error", (error) => {
       console.error(error)
+      reject(error);
+
     });
   })
 }
