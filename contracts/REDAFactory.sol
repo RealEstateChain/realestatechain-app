@@ -31,7 +31,7 @@ contract REDAFactory {
     uint id = redas.push(REDA(_uri, _meta)) - 1;
     redaToOwner[id] = msg.sender;
     ownerRedaCount[msg.sender] = ownerRedaCount[msg.sender].add(1);
-    emit NewReda(id, _uri, _meta);
+    NewReda(id, _uri, _meta);
   }
 
   function createREDA(string _uri, string _meta) public {

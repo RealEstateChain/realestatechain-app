@@ -125,18 +125,28 @@ const createNewREDA = (propWallet, creator) => { /* returns Promise */
 }
 
 const getRedaDetails = (id) => {
-  return web3Interface.getRedaFactory().methods.redas(id).call()
-  .then((reda) => {
-    return reda
-  });
+  const tokenFactory = web3Interface.getRedaFactory()
+  console.log(tokenFactory)
+  return new Promise((resolve, reject) => {
+    tokenFactory.methods.redas(id).call()
+    .then((reda) => {
+      debugger;
+      resolve(reda);
+    });
+  })
 }
 
 const getRedaHistory = (id) => {
-  return web3Interface.getRedaFactory().getPastEvents("NewReda", { fromBlock: 0, toBlock: "latest" })
-  .then(function(events) {
-    // `events` is an array of `event` objects 
-    return events;
-  });
+  const tokenFactory = web3Interface.getRedaFactory()
+  console.log(tokenFactory)
+  return new Promise((resolve, reject) => {
+    tokenFactory.getPastEvents("NewReda", { fromBlock: 0, toBlock: "latest" })
+    .then(function(events) {
+      // `events` is an array of `event` objects 
+      debugger;
+      resolve(events);
+    });
+  })
 }
 
 const redaToOwner = (id) => {
@@ -151,6 +161,19 @@ const getRedasByOwner = (owner) => {
   .then((redas) => {
     return redas
   });
+}
+
+
+const initiaizeEventListener = () => { /* returns Promise */
+  const tokenFactory = web3Interface.getRedaFactory()
+  console.log('setting event listener')
+  tokenFactory.events.NewReda()
+    .on("data", function(event) {
+      let reda = event.returnValues;
+      // We can access this event's 3 return values on the `event.returnValues` object:
+      console.log("A new reda was created!", reda.redaId, reda.meta);
+    })
+    .on("error", console.error);
 }
 
 export default {
@@ -169,5 +192,6 @@ export default {
   getRedaHistory,
   redaToOwner,
   getRedasByOwner,
+  initiaizeEventListener,
   // updateREDA
 }

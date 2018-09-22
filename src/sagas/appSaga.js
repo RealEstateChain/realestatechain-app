@@ -27,7 +27,7 @@ export function* watchWeb3Initialized() {
   const action = yield take(ActionTypes.WEB3_INITIALIZED)
   try {
     const web3Instance = action.payload.web3Instance
-    //yield call(services.web3.web3Interface.setWeb3)
+
     console.log('got  web3 instance: ')
     console.log(web3Instance)
     yield call(services.web3.web3Interface.setWeb3, web3Instance)
@@ -36,14 +36,12 @@ export function* watchWeb3Initialized() {
     console.log('got accounts: ')
     console.dir(accounts)
     yield put({type: ActionTypes.SET_ACCOUNTS, payload: accounts})
-    // const acct = yield call(services.web3.getAccount)
-    // console.log(acct)
-    //yield put(web3Initialized(web3Provider));
+
+    yield call(services.web3.initiaizeEventListener)
+
 
   } catch (e) {
     console.log(e);
-    //yield put(handleError(e))
-    //yield put(uploadError(e))
   }
   
 }
@@ -57,16 +55,17 @@ export function* watchCreateREDA() {
       const newRedaReceipt = yield call(services.web3.createNewREDA, propWallet, creator)
       console.log('created reda')
       console.dir(newRedaReceipt)
-      const newReda = yield call(services.web3.getRedasByOwner, creator)
-      console.log('new reda:')
-      console.dir(newReda)
+      yield put({type: ActionTypes.FETCH_REDA, payload: newRedaReceipt.transactionId});
+      const history = yield call(services.web3.getRedaHistory, newRedaReceipt.transactionId);
+    yield put({type: ActionTypes.LOAD_REDA_HISTORY, payload: history});
+      //const newReda = yield call(services.web3.getRedasByOwner, creator)
+      //console.log('new reda:')
+      //console.dir(newReda)
       //const newRedaDetails = yield call(services.web3.getRedaDetails, newReda.id)
 
-      yield put(fetchReda(newReda.id));
+      
     } catch (e) {
       console.log(e);
-      //yield put(handleError(e))
-      //yield put(uploadError(e))
     }
   })
 }
@@ -77,15 +76,13 @@ export function* watchCreateREDA() {
 export function* watchLoadREDA() {
   const action = yield take(ActionTypes.FETCH_REDA)
   try {
-    const redaId = action.payload.redaId
-
+    const redaId = action.payload
+debugger;
     const history = yield call(services.web3.getRedaHistory, redaId);
-    yield put(loadRedaHistory(history));
+    yield put({type: ActionTypes.LOAD_REDA_HISTORY, payload: history});
 
   } catch (e) {
     console.log(e);
-    //yield put(handleError(e))
-    //yield put(uploadError(e))
   }
   
 }
