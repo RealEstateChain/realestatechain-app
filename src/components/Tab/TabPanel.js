@@ -9,6 +9,7 @@ import { greenCardColor, darkModeColor } from "../../assets/jss/material-dashboa
 
 import ItemGrid from '../Grid/ItemGrid.jsx';
 import ImageCarousel from "../ImageCarousel.jsx";
+import ImageMap from "../ImageMap.jsx";
 
 const styles = theme => ({
   root: {
@@ -79,7 +80,7 @@ class TabPanel extends React.Component {
         <Typography variant="title"  className={classes.title}>
           {title ? title : '\u00A0'}
         </Typography>
-        <ImageCarousel images={images} />
+        <ImageMap images={images} />
       </div>
     );
   }
