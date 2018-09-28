@@ -72,7 +72,7 @@ class TabPanel extends React.Component {
   };
 
   render() {
-    const { classes, images, title } = this.props;
+    const { classes, images, title, openDetailsPane, closeDetailsPane } = this.props;
     const { value } = this.state;
 
     return (
@@ -80,7 +80,7 @@ class TabPanel extends React.Component {
         <Typography variant="title"  className={classes.title}>
           {title ? title : '\u00A0'}
         </Typography>
-        <ImageMap images={images} />
+        <ImageMap images={images} openDetailsPane={openDetailsPane} closeDetailsPane={closeDetailsPane} />
       </div>
     );
   }

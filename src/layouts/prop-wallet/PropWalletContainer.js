@@ -12,7 +12,9 @@ import {
   setPropExtra,
   setPropContractAddress,
   setPropPrice,
-	createREDA,
+  createREDA,
+  openDetailsPane,
+  closeDetailsPane,
   
 	sendTokens,
 	startLogin,
@@ -51,6 +53,8 @@ const mapDispatchToProps = dispatch => {
     setPropContractAddress: (addr) => { dispatch(setPropContractAddress(addr)) },
     setPropPrice: (price) => { dispatch(setPropPrice(price)) },
     createREDA: (data) => { dispatch(createREDA(data))},
+    openDetailsPane: (target) => { dispatch(openDetailsPane(target))},
+    closeDetailspane: () => { dispatch(closeDetailsPane())},
     // coming later:
     send: () => dispatch(sendTokens()),
     startLogin: () => dispatch(startLogin()),

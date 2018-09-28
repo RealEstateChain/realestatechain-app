@@ -12,14 +12,14 @@ class ImageMap extends Component {
   showDetails = (target) => {
     // show details page for the corresponding image area selected
     console.log(target);
-    alert(target);
+    this.props.openDetailsPane(target)
   }
 
   render() {
     const { title } = this.props;
     return (
       <div>
-        <img src="https://thumbs.dreamstime.com/b/cartoon-family-house-interior-living-rooms-furniture-51914830.jpg" usemap="#image-map" />
+        <img src="https://thumbs.dreamstime.com/b/cartoon-family-house-interior-living-rooms-furniture-51914830.jpg" useMap="#image-map" />
 
         <map name="image-map">
             <area target="_blank" alt="Storage Space" title="Storage Space" name="storage" href="#" onClick={(target) => this.showDetails("storage")} coords="274,312,116,153" shape="rect" />

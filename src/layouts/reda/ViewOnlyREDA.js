@@ -8,6 +8,7 @@ import {
   Footer,
   TabPanel,
   PropDetails,
+  SlidingPanel,
   Web3Console,
 } from "../../components";
 import PropWallet from "../prop-wallet/PropWallet.js"
@@ -60,6 +61,7 @@ class ViewOnlyREDA extends Component {
                 />
               </ItemGrid>
             </Grid>
+            <SlidingPanel prop={prop} {...rest} />
           </div>
           <Footer />
           <Web3Console feed={prop.history} />

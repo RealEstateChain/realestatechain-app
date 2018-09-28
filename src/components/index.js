@@ -64,6 +64,8 @@ import PropDetails from "./PropDetails.js"
 import PropDataModal from "./Modal/PropDataModal";
 import UploadModal from "./Modal/UploadModal.jsx";
 
+import SlidingPanel from "./SlidingPanel.jsx";
+
 import Web3Console from "./Web3Console.jsx";
 
 // ##############################
@@ -116,6 +118,8 @@ export {
   PropDataModal,
   UploadModal,
 
+  SlidingPanel,
+  
   Web3Console,
   // Typography
   P,

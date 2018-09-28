@@ -9,7 +9,9 @@ const propInitialState = {
 	],
   floorplans: [],
   history: [],
-  contract: null
+  contract: null,
+  isDetailsPaneOpen: false,
+  detailsPaneContent: {}
 };
 
 const propReducer = (state = propInitialState, action) => {
@@ -75,6 +77,22 @@ const propReducer = (state = propInitialState, action) => {
     return {
       ...state,
       history: action.payload
+    }
+  }
+
+  if (action.type === 'OPEN_PANE')
+  {
+    return {
+      ...state,
+      isDetailsPaneOpen: true,
+      detailsPaneContent: action.payload
+    }
+  }
+  if (action.type === 'CLOSE_PANE')
+  {
+    return {
+      ...state,
+      isDetailsPaneOpen: false
     }
   }
 

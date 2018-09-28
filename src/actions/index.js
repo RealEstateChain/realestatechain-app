@@ -21,6 +21,8 @@ export const ActionTypes = {
     SET_EXTRA: 'SET_EXTRA',
     SET_CONTRACT_ADDRESS: 'SET_CONTRACT_ADDRESS',
     SET_PRICE: 'SET_PRICE',
+    OPEN_PANE: 'OPEN_PANE',
+    CLOSE_PANE: 'CLOSE_PANE',
 };
 
 export const requestFileUpload = (file) => ({
@@ -125,5 +127,14 @@ export const createREDA = (propWallet) => ({
 
 export const loadRedaHistory = (history) => ({
     type: ActionTypes.LOAD_REDA_HISTORY,
+    payload: history,
+});
+
+export const openDetailsPane = (target) => ({
+    type: ActionTypes.OPEN_PANE,
+    payload: target,
+});
+export const closeDetailsPane = () => ({
+    type: ActionTypes.CLOSE_PANE,
     payload: history,
 });
