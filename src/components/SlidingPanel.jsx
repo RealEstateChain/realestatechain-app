@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import Modal from 'react-modal';
 import SlidingPane from 'react-sliding-pane';
 import 'react-sliding-pane/dist/react-sliding-pane.css';
 
-class App extends Component {
+class SlidingPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,30 +15,26 @@ class App extends Component {
         Modal.setAppElement(this.el);
     }
 
-    componentWillReceiveProps() {
-        debugger;
-        this.setState({ isPaneOpen: !!this.props.prop.isDetailsPaneOpen })
-    }
-
-    closePane = () => {
-        this.props.closeDetailsPane();
+    closePanel = () => {
+        this.props.close();
     }
 
     render() {
+        const { isOpen, content } = this.props;
         return (
             <div ref={ref => this.el = ref}>
             <SlidingPane
                 className='some-custom-class'
                 overlayClassName='some-custom-overlay-class'
-                isOpen={ this.state.isPaneOpen }
+                isOpen={ isOpen }
                 title='REDA Details'
                 subtitle='Info based on click'
 
                 onRequestClose={ () => {
                     // triggered on "<" on left top click or on outside click
-                    this.closePane();
+                    this.closePanel();
                 } }>
-                <div>Some REDA details</div>
+                <div>{content}</div>
                 <br />
                 <img src='img.png' />
             </SlidingPane>
@@ -48,4 +43,4 @@ class App extends Component {
     }
 }
 
-export default SlidingPane;
+export default SlidingPanel;

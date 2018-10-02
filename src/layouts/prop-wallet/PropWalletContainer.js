@@ -54,7 +54,7 @@ const mapDispatchToProps = dispatch => {
     setPropPrice: (price) => { dispatch(setPropPrice(price)) },
     createREDA: (data) => { dispatch(createREDA(data))},
     openDetailsPane: (target) => { dispatch(openDetailsPane(target))},
-    closeDetailspane: () => { dispatch(closeDetailsPane())},
+    closeDetailsPane: () => { dispatch(closeDetailsPane())},
     // coming later:
     send: () => dispatch(sendTokens()),
     startLogin: () => dispatch(startLogin()),

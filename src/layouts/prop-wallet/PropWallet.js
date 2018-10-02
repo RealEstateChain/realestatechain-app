@@ -7,6 +7,7 @@ import {
   Footer,
   TabPanel,
   Tasks,
+  SlidingPanel,
   Web3Console
 } from "../../components";
 
@@ -30,7 +31,7 @@ class PropWallet extends Component {
   }
 
   render() {
-    const { classes, prop, ...rest } = this.props;
+    const { classes, prop, closeDetailsPane, ...rest } = this.props;
     return(
       <div className={classes.wrapper}>
 
@@ -49,6 +50,7 @@ class PropWallet extends Component {
               </ItemGrid>
             </Grid>
           </div>
+          <SlidingPanel prop={prop} isOpen={prop.isDetailsPaneOpen} content={prop.detailsPaneContent} close={closeDetailsPane} />
           <Footer />
           <Web3Console feed={prop.history} />
         </div>
